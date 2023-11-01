@@ -37,15 +37,31 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="110dp"
+
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="144dp"
-        android:layout_marginBottom="145dp"
+        android:layout_marginBottom="104dp"
         android:fontFamily="monospace"
-        android:text="Login"
+        android:text="Carpooling"
         android:textColor="#FFFFFF"
         android:textSize="55sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="133dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_auto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
