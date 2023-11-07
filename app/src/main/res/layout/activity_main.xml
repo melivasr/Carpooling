@@ -7,6 +7,7 @@
     android:background="@mipmap/fondo"
     tools:context=".MainActivity">
 
+    <!-- Botón para iniciar sesión -->
     <Button
         android:id="@+id/button"
         android:layout_width="176dp"
@@ -20,6 +21,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <!-- Botón para registrarse -->
     <Button
         android:id="@+id/button2"
         android:layout_width="183dp"
@@ -33,6 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <!-- Título de la aplicación "Carpooling" -->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -52,6 +57,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+
+    <!-- Imagen del logo "logo_auto" -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="133dp"

@@ -9,13 +9,15 @@
     tools:openDrawer="start">
 
 
-
+    <!-- Incluye el diseño de la barra de aplicaciones principal -->
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
+
+    <!-- Menú de navegación -->
 <com.google.android.material.navigation.NavigationView
     android:id="@+id/nav_view"
     android:layout_width="match_parent"
@@ -26,6 +28,8 @@
 
 
     />
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
