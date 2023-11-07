@@ -5,23 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     tools:context=".vista_principal">
+
+    <!-- AppBarLayout, que contiene la barra de herramientas -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
+
+        <!-- Barra de herramientas -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@mipmap/fondo"
             app:layout_scrollFlags="scroll|enterAlways"
 
             />
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- ConstraintLayout que contiene otros elementos del boton  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <!-- Agrega tu botón en la parte inferior -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/botonShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Adonde Vamos?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="1.0"
+    app:layout_anchor="@+id/constraintLayout"
+    app:layout_anchorGravity="center" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

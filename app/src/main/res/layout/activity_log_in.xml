@@ -8,6 +8,8 @@
     android:background="@mipmap/fondo"
     tools:context=".log_in">
 
+
+    <!-- Cuadro de texto para el correo electrónico -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
@@ -24,6 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Cuadro de texto para la contraseña -->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
@@ -38,8 +41,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
+    <!-- Botón de inicio de sesión -->
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonlog_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -50,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+    <!-- Imagen del logo -->
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="194dp"

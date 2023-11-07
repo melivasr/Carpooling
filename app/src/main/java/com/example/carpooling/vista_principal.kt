@@ -4,11 +4,14 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
 class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -17,6 +20,18 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vista_principal)
+
+        val botonShow: Button = findViewById(R.id.botonShow)
+
+        botonShow.setOnClickListener {
+            val view: View = layoutInflater.inflate(R.layout.item_bottom_sheet,null)
+            val dialog = BottomSheetDialog(this)
+            dialog.setContentView(view)
+            dialog.show()
+
+
+        }
+
 
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
