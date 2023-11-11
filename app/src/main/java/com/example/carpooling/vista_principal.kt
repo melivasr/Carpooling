@@ -13,13 +13,23 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
+enum class ProviderType{
+    BASIC
 
+}
 class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer:DrawerLayout
     private lateinit var toggle:ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vista_principal)
+
+        //setup
+        val bundle:Bundle? = intent.extras
+        val email: String? = bundle?.getString("email")
+        val provider: String? = bundle?.getString("provider")
+        setup(email?:"",provider?:"")
+
 
         val botonShow: Button = findViewById(R.id.botonShow)
 
@@ -45,6 +55,10 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+    }
+
+    private fun setup(s: String, s1: String) {
 
     }
 

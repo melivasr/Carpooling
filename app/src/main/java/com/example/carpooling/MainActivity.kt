@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,5 +22,9 @@ class MainActivity : AppCompatActivity() {
             val intent : Intent = Intent(this , register::class.java)
             startActivity(intent)
 
+            val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+            val bundle =Bundle()
+            bundle.putString("message","Integración de Firabase completa")
+            analytics.logEvent("InitScreen",bundle)
     }
 }}

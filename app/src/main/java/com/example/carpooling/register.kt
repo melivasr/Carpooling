@@ -1,84 +1,105 @@
 package com.example.carpooling
-import Usuario
 import android.annotation.SuppressLint
+import android.content.ContentProvider
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import base_de_datos.daoUsuario
+import androidx.appcompat.app.AlertDialog
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+
 /**
- * Esta actividad permite a los usuarios registrarse en la aplicación.
- * Los datos de registro se almacenan en una base de datos SQLite.
+ * Clase que representa la actividad de registro de usuarios.
  */
 class register : AppCompatActivity() {
-    private var userName: EditText? = null
-    private var userApellido: EditText? = null
-    private var userEmail: EditText? = null
-    private var userPassword: EditText? = null
-    private var buttonRegister: Button? = null
-    private var daoUsuario: daoUsuario? = null
-
     /**
-     * Se llama cuando se crea la actividad. Aquí se inicializan las vistas y se configuran los eventos.
+     * Método llamado cuando se crea la actividad.
      *
-     * @param savedInstanceState El estado anterior de la actividad, si existe.
+     * @param savedInstanceState Objeto que contiene datos que pueden ser útiles para
+     *                           reconstruir el estado de la actividad en caso de recreación.
      */
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Inicialización de vistas
-        userName = findViewById(R.id.editTextUser)
-        userApellido = findViewById(R.id.editTextApellido)
-        userEmail = findViewById(R.id.editTextEmail)
-        userPassword = findViewById(R.id.editTextPassword)
-        buttonRegister = findViewById(R.id.buttonRegister)
+        // Inicializar Firebase Analytics
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString("message", "Integración de Firebase completa")
+        analytics.logEvent("InitScreen", bundle)
 
-        buttonRegister?.setOnClickListener {
-            val userFullName = userName?.text.toString()
-            val userApellidos = userApellido?.text.toString()
-            val userEmail = userEmail?.text.toString()
-            val userPassword = userPassword?.text.toString()
+        // Configuración
+        setup()
+    }
+    /**
+     * Método utilizado para configurar la interfaz de usuario y manejar eventos.
+     */
 
-            // Inicializa la instancia de la base de datos justo antes de usarla
-            daoUsuario = daoUsuario(this)
+    private fun setup() {
+        val buttonRegister = findViewById<Button>(R.id.buttonRegister)
 
-            try {
-                if (daoUsuario?.buscar(userEmail) == 0) {
-                    val newUser = Usuario(
-                        usuario = userFullName,
-                        apellidos = userApellidos,
-                        correoElectronico = userEmail,
-                        password = userPassword
-                    )
+        // Establecer el título de la actividad
+        title = "Registro"
+        buttonRegister.setOnClickListener {
+            val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
+            val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
 
-                    // Intenta insertar un nuevo usuario en la base de datos
-                    if (daoUsuario?.insertUsuario(newUser) == true) {
-                        mostrarMensaje("Registro exitoso")
-                        val intent = Intent(this, vista_principal::class.java)
-                        startActivity(intent)
-                    } else {
-                        mostrarMensaje("Error durante el registro")
+            if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
+
+                // Intentar registrar al usuario con Firebase
+                FirebaseAuth.getInstance()
+                    .createUserWithEmailAndPassword(
+                        editTextEmail.text.toString(),
+                        editTextPassword.text.toString()
+                    ).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Registro exitoso
+                            showHome(
+                                task.result?.user?.email ?: "",
+                                ProviderType.BASIC
+                            )
+                        } else {
+                            // Manejar fallos en el registro
+                            showAlert()
+                        }
                     }
-                } else {
-                    mostrarMensaje("El usuario ya existe")
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                mostrarMensaje("Error inesperado")
+            } else {
+                // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
+                Toast.makeText(
+                    this@register,
+                    "Por favor, completa todos los campos.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
+    /**
+     * Método utilizado para mostrar un cuadro de diálogo de alerta en caso de fallo en el registro.
+     */
+    private fun showAlert() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("Se ha producido un error autenticando al usuario")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
 
     /**
-     * Muestra un mensaje en forma de Toast.
+     * Método utilizado para mostrar la actividad principal después de un registro exitoso.
      *
-     * @param mensaje El mensaje que se mostrará.
+     * @param email    Dirección de correo electrónico del usuario registrado.
+     * @param provider Tipo de proveedor de autenticación utilizado.
      */
-    private fun mostrarMensaje(mensaje: String) {
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    private fun showHome(email: String, provider: ProviderType) {
+        val homeIntent = Intent(this, vista_principal::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
     }
 }

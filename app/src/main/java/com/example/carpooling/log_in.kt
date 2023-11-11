@@ -6,42 +6,97 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+
+/**
+ * Clase que representa la actividad de inicio de sesión.
+ */
 
 class log_in : AppCompatActivity() {
-    var user: EditText? = null
-    var pass: EditText? = null
-    var buttonlogin: Button? = null
-
+    /**
+     * Método llamado cuando se crea la actividad.
+     *
+     * @param savedInstanceState Objeto que contiene datos que pueden ser útiles para
+     *                           reconstruir el estado de la actividad en caso de recreación.
+     */
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
 
-        user = findViewById(R.id.editTextEmail)
-        pass = findViewById(R.id.editTextPassword)
-        buttonlogin = findViewById(R.id.buttonlog_in)
+        // Inicializar Firebase Analytics
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString("message", "Integración de Firebase completa")
+        analytics.logEvent("InitScreen", bundle)
 
-        buttonlogin?.setOnClickListener {
-            // Obtener el usuario y contraseña ingresados
-            val userEmail = user?.text.toString()
-            val userPassword = pass?.text.toString()
+        // Configurar la interfaz de usuario
+        setup()
+    }
+    /**
+     * Método utilizado para configurar la interfaz de usuario y manejar eventos.
+     */
+    private fun setup() {
+        val buttonRegister = findViewById<Button>(R.id.buttonlog_in)
 
-            // Realizar la verificación del usuario (aquí debes implementar tu lógica)
-            if (verificarUsuario(userEmail, userPassword)) {
-                // Abrir la actividad VentanaPrincipal
-                val intent = Intent(this, vista_principal::class.java)
-                startActivity(intent)
+        // Establecer el título de la actividad
+        title = "log_in"
+        buttonRegister.setOnClickListener {
+            val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
+            val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
+
+            if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
+                // Intentar iniciar sesión con Firebase
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(
+                        editTextEmail.text.toString(),
+                        editTextPassword.text.toString()
+                    ).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Inicio de sesión exitoso
+                            showHome(
+                                task.result?.user?.email ?: "",
+                                ProviderType.BASIC
+                            )
+                        } else {
+                            // Manejar fallos en el inicio de sesión
+                            showAlert()
+                        }
+                    }
             } else {
-                // Mostrar mensaje de error si no se encontró el usuario
-                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
+                Toast.makeText(
+                    this@log_in,
+                    "Por favor, completa todos los campos.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
-
-    // Esta función simula la verificación del usuario (debes implementar la lógica real)
-    private fun verificarUsuario(email: String, password: String): Boolean {
-        // Aquí debes realizar la búsqueda en tu base de datos o en tus registros de usuarios
-        // para verificar si el usuario y contraseña coinciden.
-        // Devuelve true si el usuario existe y la contraseña es correcta, de lo contrario, devuelve false.
-        return false // Cambia esto con tu lógica de verificación real
+    /**
+     * Método utilizado para mostrar un cuadro de diálogo de alerta en caso de fallo en el inicio de sesión.
+     */
+    private fun showAlert() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("Se ha producido un error autenticando al usuario")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+    /**
+     * Método utilizado para mostrar la actividad principal después de un inicio de sesión exitoso.
+     *
+     * @param email    Dirección de correo electrónico del usuario autenticado.
+     * @param provider Tipo de proveedor de autenticación utilizado.
+     */
+    private fun showHome(email: String, provider: ProviderType) {
+        val homeIntent = Intent(this, vista_principal::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
     }
 }
