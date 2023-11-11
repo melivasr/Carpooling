@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "48202729315",
+    "project_id": "carpooling-7214b",
+    "storage_bucket": "carpooling-7214b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48202729315:android:4b405cc0a4c53a46a97556",
+        "android_client_info": {
+          "package_name": "com.example.carpooling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7Sr_314azRlPG8VPYfX5ABg3Gn_OT55Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
