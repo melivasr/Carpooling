@@ -65,27 +65,15 @@ class log_in : AppCompatActivity() {
                 var correo = editTextEmail.text.toString()
                 var password = editTextPassword.text.toString()
 
+
                 usuarioApi.getUsuario(correo, password).enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                        if (response.isSuccessful) {
                             val usuario = response.body()
                             if (usuario != null) {
                                 Toast.makeText(this@log_in, "Login successful!", Toast.LENGTH_SHORT)
                                     .show()
                                 showHome(correo, ProviderType.BASIC)
-                            } else {
-                                Toast.makeText(
-                                    this@log_in,
-                                    "Correo or password incorrect",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                             }
-                        } else {
-                            Toast.makeText(this@log_in, "Login failed!!!", Toast.LENGTH_SHORT)
-                                .show()
-                            Logger.getLogger(log_in::class.java.name)
-                                .log(Level.SEVERE, "Error occurred")
-                        }
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
