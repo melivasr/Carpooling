@@ -12,7 +12,7 @@ class RetrofitService {
 
     private fun initializeRetrofit() {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.0.236:9000")
+            .baseUrl("http://192.168.100.251:9999")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

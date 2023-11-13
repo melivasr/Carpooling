@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.retrofit.RetrofitService
@@ -51,31 +52,40 @@ class register : AppCompatActivity() {
 
     private fun setup() {
         val buttonRegister = findViewById<Button>(R.id.buttonRegister)
+        val radioGroupTipo = findViewById<RadioGroup>(R.id.radioGroupTipo)
 
         // Establecer el título de la actividad
         title = "Registro"
         buttonRegister.setOnClickListener {
             val editTextUser = findViewById<EditText>(R.id.editTextUser)
             val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
-            val editTextTipo = findViewById<EditText>(R.id.editTextTipo)
             val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
 
 
             val retrofitService = RetrofitService()
             val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
 
-            buttonRegister.setOnClickListener { view ->
-                val name = editTextUser.text.toString()
-                val correo = editTextEmail.text.toString()
-                val tipo = editTextTipo.text.toString()
-                val contrasena = editTextPassword.text.toString()
 
-                val usuario = Usuario(name, correo, tipo, contrasena)
+            buttonRegister.setOnClickListener { view ->
+                var name = editTextUser.text.toString()
+                var correo = editTextEmail.text.toString()
+                var tipo = when (radioGroupTipo.checkedRadioButtonId) {
+                    R.id.empleadoButton -> "empleado"
+                    R.id.conductorButton -> "conductor"
+                    else -> ""
+                }
+                var password = editTextPassword.text.toString()
+
+                val usuario = Usuario(name, correo, tipo, password)
 
 
                 usuarioApi.save(usuario).enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                         Toast.makeText(this@register, "Save successful!", Toast.LENGTH_SHORT).show()
+                        showHome(
+                            correo,
+                            ProviderType.BASIC
+                        )
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
@@ -85,6 +95,8 @@ class register : AppCompatActivity() {
                     }
                 })
 
+
+                /*
                 if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
 
                     // Intentar registrar al usuario con Firebase
@@ -112,7 +124,8 @@ class register : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            }
+                */
+               }
         }
     }
 
