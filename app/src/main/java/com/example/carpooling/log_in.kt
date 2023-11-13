@@ -77,7 +77,7 @@ class log_in : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                        Toast.makeText(this@log_in, "Login failed!!!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@log_in, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                         Logger.getLogger(log_in::class.java.name)
                             .log(Level.SEVERE, "Error occurred", t)
                     }

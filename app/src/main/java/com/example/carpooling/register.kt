@@ -89,7 +89,7 @@ class register : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                        Toast.makeText(this@register, "Save failed!!!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@register, "Save failed!!", Toast.LENGTH_SHORT).show()
                         Logger.getLogger(register::class.java.name)
                             .log(Level.SEVERE, "Error occurred", t)
                     }
