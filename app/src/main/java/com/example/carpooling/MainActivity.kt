@@ -26,5 +26,7 @@ class MainActivity : AppCompatActivity() {
             val bundle =Bundle()
             bundle.putString("message","Integración de Firabase completa")
             analytics.logEvent("InitScreen",bundle)
+        }
     }
-}}
+
+}

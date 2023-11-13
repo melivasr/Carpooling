@@ -27,7 +27,7 @@
 
     <!-- Cuadro de texto para el nombre de Apellido -->
     <EditText
-        android:id="@+id/editTextApellido"
+        android:id="@+id/editTextTipo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -1,4 +1,6 @@
 package com.example.carpooling
+
+import com.example.model.Usuario
 import android.annotation.SuppressLint
 import android.content.ContentProvider
 import android.content.Intent
@@ -8,8 +10,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.retrofit.RetrofitService
+import com.example.retrofit.UsuarioApi
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.logging.Level
+import java.util.logging.Logger
 
 /**
  * Clase que representa la actividad de registro de usuarios.
@@ -35,6 +44,7 @@ class register : AppCompatActivity() {
         // Configuración
         setup()
     }
+
     /**
      * Método utilizado para configurar la interfaz de usuario y manejar eventos.
      */
@@ -45,38 +55,67 @@ class register : AppCompatActivity() {
         // Establecer el título de la actividad
         title = "Registro"
         buttonRegister.setOnClickListener {
+            val editTextUser = findViewById<EditText>(R.id.editTextUser)
             val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
+            val editTextTipo = findViewById<EditText>(R.id.editTextTipo)
             val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
 
-            if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
 
-                // Intentar registrar al usuario con Firebase
-                FirebaseAuth.getInstance()
-                    .createUserWithEmailAndPassword(
-                        editTextEmail.text.toString(),
-                        editTextPassword.text.toString()
-                    ).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            // Registro exitoso
-                            showHome(
-                                task.result?.user?.email ?: "",
-                                ProviderType.BASIC
-                            )
-                        } else {
-                            // Manejar fallos en el registro
-                            showAlert()
-                        }
+            val retrofitService = RetrofitService()
+            val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
+
+            buttonRegister.setOnClickListener { view ->
+                val name = editTextUser.text.toString()
+                val correo = editTextEmail.text.toString()
+                val tipo = editTextTipo.text.toString()
+                val contrasena = editTextPassword.text.toString()
+
+                val usuario = Usuario(name, correo, tipo, contrasena)
+
+
+                usuarioApi.save(usuario).enqueue(object : Callback<Usuario> {
+                    override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+                        Toast.makeText(this@register, "Save successful!", Toast.LENGTH_SHORT).show()
                     }
-            } else {
-                // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
-                Toast.makeText(
-                    this@register,
-                    "Por favor, completa todos los campos.",
-                    Toast.LENGTH_SHORT
-                ).show()
+
+                    override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                        Toast.makeText(this@register, "Save failed!!!", Toast.LENGTH_SHORT).show()
+                        Logger.getLogger(register::class.java.name)
+                            .log(Level.SEVERE, "Error occurred", t)
+                    }
+                })
+
+                if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
+
+                    // Intentar registrar al usuario con Firebase
+                    FirebaseAuth.getInstance()
+                        .createUserWithEmailAndPassword(
+                            editTextEmail.text.toString(),
+                            editTextPassword.text.toString()
+                        ).addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                // Registro exitoso
+                                showHome(
+                                    task.result?.user?.email ?: "",
+                                    ProviderType.BASIC
+                                )
+                            } else {
+                                // Manejar fallos en el registro
+                                showAlert()
+                            }
+                        }
+                } else {
+                    // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
+                    Toast.makeText(
+                        this@register,
+                        "Por favor, completa todos los campos.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
+
     /**
      * Método utilizado para mostrar un cuadro de diálogo de alerta en caso de fallo en el registro.
      */
@@ -103,3 +142,8 @@ class register : AppCompatActivity() {
         startActivity(homeIntent)
     }
 }
+
+
+
+
+

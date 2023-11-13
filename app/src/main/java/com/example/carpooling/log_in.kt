@@ -93,11 +93,10 @@ class log_in : AppCompatActivity() {
      * @param provider Tipo de proveedor de autenticación utilizado.
      */
     private fun showHome(email: String, provider: ProviderType) {
-        val mapIntent = Intent(this,MapActivity::class.java)
         val homeIntent = Intent(this, vista_principal::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }
-        startActivity(mapIntent)
+        startActivity(homeIntent)
     }
 }
