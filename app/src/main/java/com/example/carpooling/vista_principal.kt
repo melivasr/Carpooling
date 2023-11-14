@@ -1,5 +1,6 @@
 package com.example.carpooling
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.carpooling.Amigos.Amigos
+import com.example.carpooling.calificaciones.calificaciones
+import com.example.carpooling.mi_perfil.Mi_perfil_usuario
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 enum class ProviderType{
@@ -63,14 +67,48 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_item_one -> Toast.makeText(this,"Item 1",Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this,"Item 2",Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three -> Toast.makeText(this,"Item 3",Toast.LENGTH_SHORT).show()
+        when (item.itemId) {
+            R.id.nav_item_one -> {
+                Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show()
+                abrirVentanaPerfil()
+            }
+            R.id.nav_item_two -> {
+                Toast.makeText(this, "Historial", Toast.LENGTH_SHORT).show()
+                // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
+            }
+            R.id.nav_item_three -> {
+                Toast.makeText(this, "calificaciones", Toast.LENGTH_SHORT).show()
+                abrirVentanacalificaciones()
+                // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
+            }R.id.nav_item_four -> {
+                Toast.makeText(this, "Amigos", Toast.LENGTH_SHORT).show()
+                abrirVentanaAmigos()
+                // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
+            }
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
+    private fun abrirVentanaPerfil() {
+        // Crear un Intent para abrir la actividad de Amigos
+        val intent = Intent(this, Mi_perfil_usuario::class.java)
+        startActivity(intent)
+    }private fun abrirVentanaAmigos() {
+        // Crear un Intent para abrir la actividad de Amigos
+        val intent = Intent(this, Amigos::class.java)
+        startActivity(intent)
+    }
+    private fun abrirVentanacalificaciones() {
+        // Crear un Intent para abrir la actividad de Amigos
+        val intent = Intent(this, calificaciones::class.java)
+        startActivity(intent)
+    }private fun abrirVentanacaHistorial() {
+        // Crear un Intent para abrir la actividad de Amigos
+        val intent = Intent(this, calificaciones::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)

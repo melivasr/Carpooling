@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo"
-    tools:context="Amigos">
+    tools:context=".mi_perfil.Mi_perfil">
+
 </androidx.constraintlayout.widget.ConstraintLayout>

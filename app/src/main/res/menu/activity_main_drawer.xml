@@ -5,7 +5,7 @@
         <!-- Elemento de menú 1 - Amistades -->
         <item android:id="@+id/nav_item_one"
             android:icon="@mipmap/amistad"
-            android:title="Amigos"/>
+            android:title="Mi perfil"/>
 
         <!-- Elemento de menú 2 - Historial -->
         <item android:id="@+id/nav_item_two"
@@ -16,6 +16,11 @@
         <item android:id="@+id/nav_item_three"
             android:icon="@drawable/abc_vector_test"
             android:title="Calificaciones"/>
+
+        <!-- Elemento de menú 3 - Item 4 -->
+        <item android:id="@+id/nav_item_four"
+            android:icon="@drawable/abc_vector_test"
+            android:title="Amigos"/>
     </group>
     <!-- Elemento de menú con submenú - Title 1 -->
 </menu>
