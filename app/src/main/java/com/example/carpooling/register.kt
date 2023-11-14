@@ -92,7 +92,9 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 var ubicacion = spinner.selectedItem.toString()
 
-                val usuario = Usuario(name, correo, tipo, ubicacion, password)
+                var calificacion = "5"
+
+                val usuario = Usuario(name, correo, tipo, ubicacion, password, calificacion)
 
 
                 usuarioApi.save(usuario).enqueue(object : Callback<Usuario> {
