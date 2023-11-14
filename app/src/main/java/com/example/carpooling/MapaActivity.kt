@@ -17,7 +17,7 @@ class MapaActivity: AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.mapa)
+        setContentView(R.layout.app_bar_main)
         createFragment()
     }
     private fun createFragment(){
