@@ -5,12 +5,12 @@
         <!-- Elemento de menú 1 - Amistades -->
         <item android:id="@+id/nav_item_one"
             android:icon="@mipmap/amistad"
-            android:title="Amistades"/>
+            android:title="Amigos"/>
 
         <!-- Elemento de menú 2 - Historial -->
         <item android:id="@+id/nav_item_two"
             android:icon="@mipmap/historia"
-            android:title="Historial"/>
+            android:title="Historial de viajes"/>
 
         <!-- Elemento de menú 3 - Item 3 -->
         <item android:id="@+id/nav_item_three"
@@ -18,22 +18,4 @@
             android:title="Calificaciones"/>
     </group>
     <!-- Elemento de menú con submenú - Title 1 -->
-    <item android:title="Title 1">
-        <menu>
-            <!-- Elemento de submenú 1 - Item 6 -->
-            <item android:id="@+id/nav_item_six"
-                android:icon="@drawable/abc_vector_test"
-                android:title="Item 6"/>
-
-            <!-- Elemento de submenú 2 - Item 7 -->
-            <item android:id="@+id/nav_item_seven"
-                android:icon="@drawable/abc_vector_test"
-                android:title="Item 7"/>
-
-
-
-
-
-        </menu>
-    </item>
 </menu>

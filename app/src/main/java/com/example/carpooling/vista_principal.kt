@@ -34,7 +34,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val botonShow: Button = findViewById(R.id.botonShow)
 
         botonShow.setOnClickListener {
-            val view: View = layoutInflater.inflate(R.layout.item_bottom_sheet,null)
+            val view: View = layoutInflater.inflate(R.layout.activity_carpooling,null)
             val dialog = BottomSheetDialog(this)
             dialog.setContentView(view)
             dialog.show()

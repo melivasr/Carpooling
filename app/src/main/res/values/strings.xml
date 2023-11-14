@@ -13,4 +13,13 @@
         <item>Ubicacion7</item>
         <item>Ubicacion8</item>
     </string-array>
+
+    <string-array name="amigos_array">
+    <item>Amigo1</item>
+    <item>Amigo2</item>
+    <item>Amigo3</item>
+    <item>Amigo4</item>
+    <item>Amigo5</item>
+    <item>Amigo6</item>
+    </string-array>
 </resources>
