@@ -6,9 +6,13 @@ import android.content.ContentProvider
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.retrofit.RetrofitService
@@ -24,7 +28,7 @@ import java.util.logging.Logger
 /**
  * Clase que representa la actividad de registro de usuarios.
  */
-class register : AppCompatActivity() {
+class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     /**
      * Método llamado cuando se crea la actividad.
      *
@@ -53,6 +57,18 @@ class register : AppCompatActivity() {
     private fun setup() {
         val buttonRegister = findViewById<Button>(R.id.buttonRegister)
         val radioGroupTipo = findViewById<RadioGroup>(R.id.radioGroupTipo)
+        val spinner: Spinner = findViewById(R.id.spinnerUbicaciones)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.ubicaciones_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = this
 
         // Establecer el título de la actividad
         title = "Registro"
@@ -60,8 +76,6 @@ class register : AppCompatActivity() {
             val editTextUser = findViewById<EditText>(R.id.editTextUser)
             val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
             val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
-
-
             val retrofitService = RetrofitService()
             val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
 
@@ -76,7 +90,9 @@ class register : AppCompatActivity() {
                 }
                 var password = editTextPassword.text.toString()
 
-                val usuario = Usuario(name, correo, tipo, password)
+                var ubicacion = spinner.selectedItem.toString()
+
+                val usuario = Usuario(name, correo, tipo, ubicacion, password)
 
 
                 usuarioApi.save(usuario).enqueue(object : Callback<Usuario> {
@@ -154,6 +170,16 @@ class register : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val selectedItem = parent?.getItemAtPosition(position).toString()
+        // Haz algo con el elemento seleccionado
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        // Haz algo cuando no se selecciona ningún elemento
+    }
+
 }
 
 

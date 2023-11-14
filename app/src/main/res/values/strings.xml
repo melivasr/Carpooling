@@ -3,5 +3,14 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
-
+    <string-array name="ubicaciones_array">
+        <item>Ubicacion1</item>
+        <item>Ubicacion2</item>
+        <item>Ubicacion3</item>
+        <item>Ubicacion4</item>
+        <item>Ubicacion5</item>
+        <item>Ubicacion6</item>
+        <item>Ubicacion7</item>
+        <item>Ubicacion8</item>
+    </string-array>
 </resources>
