@@ -50,29 +50,49 @@ class log_in : AppCompatActivity() {
     /**
      * Método utilizado para configurar la interfaz de usuario y manejar eventos.
      */
+    /**
+     * Configura la interfaz de usuario y la lógica de la actividad de inicio de sesión.
+     *
+     * Este método establece el título de la actividad y configura un listener para el botón de inicio
+     * de sesión, donde se maneja la lógica de autenticación del usuario.
+     */
     private fun setup() {
+        // Obtener referencia al botón de inicio de sesión
         val buttonRegister = findViewById<Button>(R.id.buttonlog_in)
 
         // Establecer el título de la actividad
         title = "log_in"
+
+        // Configurar el listener para el botón de inicio de sesión
         buttonRegister.setOnClickListener {
+
+            // Obtener referencias a los campos de correo electrónico y contraseña
             val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
             val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
 
+            // Crear instancia de RetrofitService y UsuarioApi
             val retrofitService = RetrofitService()
             val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
 
-
+            // Configurar el listener para el clic del botón de inicio de sesión
             buttonRegister.setOnClickListener { view ->
+
+                // Obtener el correo electrónico y la contraseña ingresados por el usuario
                 var correo = editTextEmail.text.toString()
                 var password = editTextPassword.text.toString()
 
-
+                // Enviar la solicitud de inicio de sesión al servidor
                 usuarioApi.getUsuario(correo, password).enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+
+                        // Manejar la respuesta exitosa del servidor
                         val usuario = response.body()
                         if (usuario != null) {
+
+                            // Mostrar mensaje de inicio de sesión exitoso
                             Toast.makeText(this@log_in, "Login successful!", Toast.LENGTH_SHORT).show()
+
+                            // Determinar el tipo de usuario y mostrar la pantalla correspondiente
                             if (usuario.tipo == "empleado") {
                                 val intent = Intent(this@log_in, vista_principal::class.java)
                                 intent.putExtra("email", usuario.correo)
@@ -96,7 +116,14 @@ class log_in : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                        Toast.makeText(this@log_in, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                        // Manejar el fallo en la autenticación
+                        Toast.makeText(
+                            this@log_in,
+                            "Correo o contraseña incorrectos",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        // Registrar el error en el sistema de registro
                         Logger.getLogger(log_in::class.java.name)
                             .log(Level.SEVERE, "Error occurred", t)
                     }
