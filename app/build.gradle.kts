@@ -52,6 +52,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
 
 
     testImplementation("junit:junit:4.13.2")
