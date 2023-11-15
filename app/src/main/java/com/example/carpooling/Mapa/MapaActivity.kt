@@ -59,13 +59,13 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             end = ""
             poly?.remove()
             poly = null
-            Toast.makeText(this, "Selecciona punto de origen y final", Toast.LENGTH_SHORT).show()
-            /*lifecycleScope.launch{
-                val result=getUserLocation(this@MapaActivity)
+            Toast.makeText(this, "Doble tap para marcar una ruta en el mapa", Toast.LENGTH_SHORT).show()
+            lifecycleScope.launch {
+                val result = getUserLocation(this@MapaActivity)
                 if (::map.isInitialized) {
                     map.setOnMapClickListener {
                         if (start.isEmpty()) {
-                            if(result!=null){
+                            if (result != null) {
                                 start = "${result.longitude},${result.latitude}"
                             }
                         } else if (end.isEmpty()) {
@@ -75,10 +75,7 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
                 }
             }
-            */
-
-
-
+            /*
             if (::map.isInitialized) {
                 map.setOnMapClickListener {
                     if (start.isEmpty()) {
@@ -89,6 +86,7 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
                 }
             }
+            */
         }
         createFragment()
     }
