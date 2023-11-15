@@ -170,7 +170,7 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 // Calificación inicial
                 var calificacion = "5"
-                
+
                 // Crear un objeto Usuario con la información ingresada
                 val usuario = Usuario(name, correo, tipo,  ubicacionId, password, calificacion)
 
