@@ -106,11 +106,24 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             Toast.makeText(this@register, "Save successful!", Toast.LENGTH_SHORT)
                                 .show()
                             if (usuario.tipo == "empleado") {
-                                showHome(correo, ProviderType.BASIC)
+                                val intent = Intent(this@register, vista_principal::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
                             } else if (usuario.tipo == "conductor") {
-                                showHomeConductor(correo, ProviderType.BASIC)
+                                val intent =
+                                    Intent(this@register, vista_principal_conductor::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
                             } else {
-                                showHome(correo, ProviderType.BASIC)
+                                val intent = Intent(this@register, vista_principal::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
                             }
                         }
                     }

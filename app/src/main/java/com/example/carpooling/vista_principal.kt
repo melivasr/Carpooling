@@ -14,7 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.calificaciones.calificaciones
-import com.example.carpooling.mi_perfil.Mi_perfil_usuario
+import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
@@ -90,9 +90,20 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     }
 
     private fun abrirVentanaPerfil() {
-        // Crear un Intent para abrir la actividad de Amigos
-        val intent = Intent(this, Mi_perfil_usuario::class.java)
+
+        val nombre = intent.getStringExtra("nombre")
+        val correo = intent.getStringExtra("email")
+        val calificacion = intent.getStringExtra("calificacion")
+
+        val intent = Intent(this, Mi_perfil_empleado::class.java)
+
+        intent.putExtra("email", correo)
+        intent.putExtra("nombre",  nombre)
+        intent.putExtra("calificacion", calificacion)
+
         startActivity(intent)
+
+
     }private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
         val intent = Intent(this, Amigos::class.java)

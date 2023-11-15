@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo"
+    android:background="@mipmap/fondo2"
     tools:context=".habilitar_carpooling">
 
     <!-- Agrega aquí la etiqueta de inicio para ScrollView -->
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|start"
-                    android:text="Viaje con amigo"
+                    android:text="Viaje de amigos"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|start"
-                    android:text="Viaje con empleado"
+                    android:text="Viaje de empleados"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
             </LinearLayout>

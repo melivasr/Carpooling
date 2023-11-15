@@ -7,8 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo"
-    tools:context=".Amigos.Amigos">
+    android:background="@mipmap/fondo2"
+    tools:context=".mi_perfil.Mi_perfil_conductor">
 
     <!-- Foto de perfil -->
     <ImageView
@@ -26,7 +26,6 @@
         android:id="@+id/textViewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre del Usuario"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/imageViewPerfil"
@@ -39,7 +38,6 @@
         android:id="@+id/textViewCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="correo@example.com"
         android:textSize="16sp"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/textViewNombre"
@@ -52,7 +50,6 @@
         android:id="@+id/textViewCalificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calificación: 4.5"
         android:textSize="16sp"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/textViewCorreo"

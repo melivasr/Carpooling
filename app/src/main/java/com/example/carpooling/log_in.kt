@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.carpooling.mi_perfil.Mi_perfil_conductor
+import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.model.Usuario
 import com.example.retrofit.RetrofitService
 import com.example.retrofit.UsuarioApi
@@ -72,11 +74,23 @@ class log_in : AppCompatActivity() {
                         if (usuario != null) {
                             Toast.makeText(this@log_in, "Login successful!", Toast.LENGTH_SHORT).show()
                             if (usuario.tipo == "empleado") {
-                                showHome(correo, ProviderType.BASIC)
+                                val intent = Intent(this@log_in, vista_principal::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
                             } else if (usuario.tipo == "conductor") {
-                                showHomeConductor(correo, ProviderType.BASIC)
-                            }else{
-                                showHome(correo, ProviderType.BASIC)
+                                val intent = Intent(this@log_in, vista_principal_conductor::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
+                            } else {
+                                val intent = Intent(this@log_in, vista_principal::class.java)
+                                intent.putExtra("email", usuario.correo)
+                                intent.putExtra("nombre", usuario.name)
+                                intent.putExtra("calificacion", usuario.calificacion)
+                                startActivity(intent)
                             }
                         }
                     }
@@ -101,28 +115,6 @@ class log_in : AppCompatActivity() {
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
-    }
-
-    /**
-     * Método utilizado para mostrar la actividad principal después de un inicio de sesión exitoso.
-     *
-     * @param email    Dirección de correo electrónico del usuario autenticado.
-     * @param provider Tipo de proveedor de autenticación utilizado.
-     */
-    private fun showHome(email: String, provider: ProviderType) {
-        val homeIntent = Intent(this, vista_principal::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(homeIntent)
-    }
-
-    private fun showHomeConductor(email: String, provider: ProviderType) {
-        val homeIntent = Intent(this, vista_principal_conductor::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(homeIntent)
     }
 
 
