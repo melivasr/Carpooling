@@ -4,15 +4,58 @@
     <string name="navigation_drawer_close">close</string>
 
     <string-array name="ubicaciones_array">
-        <item>Ubicacion1</item>
-        <item>Ubicacion2</item>
-        <item>Ubicacion3</item>
-        <item>Ubicacion4</item>
-        <item>Ubicacion5</item>
-        <item>Ubicacion6</item>
-        <item>Ubicacion7</item>
-        <item>Ubicacion8</item>
+        <item>Banco ATM</item>
+        <item>Clinica Dental</item>
+        <item>Taco Bell</item>
+        <item>MonkeyScrubs</item>
+        <item>Funeraria San Jorge</item>
+        <item>Calle 4</item>
+        <item>Burger King</item>
+        <item>Calle 2</item>
+        <item>Instituto Jimenez</item>
+        <item>Farmacia CCSS</item>
+        <item>Ópticas Visión</item>
+        <item>Plaza Asís</item>
+        <item>Subway</item>
+        <item>Ruinas</item>
+        <item>Banco BAC</item>
+        <item>Laboratorio Clínico</item>
+        <item>Calle 0</item>
+        <item>Avenida 10</item>
+        <item>Cartago Centro</item>
+        <item>Caja ANDE</item>
+        <item>Pops</item>
+        <item>Avenida 6</item>
+        <item>Barber Shop</item>
+        <item>Coco Catering</item>
+        <item>Rosti</item>
+        <item>Soda Il Fratello</item>
+        <item>Psico&amp;Yoga Centro de Salud Integral</item>
+        <item>Bufete Cohghi Sanabria</item>
+        <item>Panadería Bruma</item>
+        <item>CoopeAnde</item>
+        <item>Café T\'Ando</item>
+        <item>La canela</item>
+        <item>CredeCoop R.L.</item>
+        <item>OFICSEVI</item>
+        <item>Pizzeria Villa Italia</item>
+        <item>Bakery Esau</item>
+        <item>Hodgson\'s</item>
+        <item>Transtusa</item>
+        <item>Sara Studio</item>
+        <item>Pollos Bro\'s</item>
+        <item>Bar La Nave</item>
+        <item>Boutique Café</item>
+        <item>Antiguo Matadero</item>
+        <item>Panadería Su</item>
+        <item>CoopeMep</item>
+        <item>CAFLIFE</item>
+        <item>Grupo Decobaño</item>
+        <item>Clínica Dental OdontoIntegral</item>
+        <item>GVI</item>
+        <item>Plaza la soledad</item>
     </string-array>
+
 
     <string-array name="amigos_array">
         <item>Amigo1</item>

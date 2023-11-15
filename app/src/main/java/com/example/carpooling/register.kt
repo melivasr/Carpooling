@@ -78,7 +78,58 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
             val retrofitService = RetrofitService()
             val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
-
+            val ubicacionesMap = mapOf(
+                "Banco ATM" to "0",
+                "Clinica Dental" to "1",
+                "Taco Bell" to "2",
+                "MonkeyScrubs" to "3",
+                "Funeraria San Jorge" to "4",
+                "Calle 4" to "5",
+                "Burger King" to "6",
+                "Calle 2" to "7",
+                "Instituto Jimenez" to "8",
+                "Farmacia CCSS" to "9",
+                "Ópticas Visión" to "10",
+                "Plaza Asís" to "11",
+                "Subway" to "12",
+                "Ruinas" to "13",
+                "Banco BAC" to "14",
+                "Laboratorio Clínico" to "15",
+                "Calle 0" to "16",
+                "Avenida 10" to "17",
+                "Cartago Centro" to "18",
+                "Caja ANDE" to "19",
+                "Pops" to "20",
+                "Avenida 6" to "21",
+                "Barber Shop" to "22",
+                "Coco Catering" to "23",
+                "Rosti" to "24",
+                "Soda Il Fratello" to "25",
+                "Psico&Yoga Centro de Salud Integral" to "26",
+                "Bufete Cohghi Sanabria" to "27",
+                "Panadería Bruma" to "28",
+                "CoopeAnde" to "29",
+                "Café T'Ando" to "30",
+                "La canela" to "31",
+                "CredeCoop R.L." to "32",
+                "OFICSEVI" to "33",
+                "Pizzeria Villa Italia" to "34",
+                "Bakery Esau" to "35",
+                "Hodgson's" to "36",
+                "Transtusa" to "37",
+                "Sara Studio" to "38",
+                "Pollos Bro's" to "39",
+                "Bar La Nave" to "40",
+                "Boutique Café" to "41",
+                "Antiguo Matadero" to "42",
+                "Panadería Su" to "43",
+                "CoopeMep" to "44",
+                "CAFLIFE" to "45",
+                "Grupo Decobaño" to "46",
+                "Clínica Dental OdontoIntegral" to "47",
+                "GVI" to "48",
+                "Plaza la soledad" to "49"
+            )
 
             buttonRegister.setOnClickListener { view ->
                 var name = editTextUser.text.toString()
@@ -90,11 +141,12 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
                 var password = editTextPassword.text.toString()
 
-                var ubicacion = spinner.selectedItem.toString()
+                var ubicacionNombre = spinner.getItemAtPosition(spinner.selectedItemPosition).toString()
+                var ubicacionId = ubicacionesMap[ubicacionNombre].toString()
 
                 var calificacion = "5"
 
-                val usuario = Usuario(name, correo, tipo, ubicacion, password, calificacion)
+                val usuario = Usuario(name, correo, tipo,  ubicacionId, password, calificacion)
 
 
 
