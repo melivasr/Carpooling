@@ -86,7 +86,6 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
 
         createNewMarker(9.864031, -83.915290,"CoopeMep")
         createNewMarker(9.863127, -83.915428,"CAFLIFE")
-        createNewMarker(9.862748, -83.915477,"Grupo Barsol")
         createNewMarker(9.862313, -83.915518,"Grupo Decobaño")
         createNewMarker(9.861462, -83.915646,"Clínica Dental OdontoIntegral")
         createNewMarker(9.860622, -83.915719,"GVI")
