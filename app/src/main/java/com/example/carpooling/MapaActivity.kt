@@ -32,30 +32,33 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        createMarker1()
-        createMarker2()
-        createMarker3()
-        createMarker4()
-        createMarker5()
-        createMarker6()
-        createMarker7()
-        createMarker8()
-        createMarker9()
-        createMarker10()
-        createMarker11()
-        createMarker12()
-        createMarker13()
-        createMarker14()
-        createMarker15()
-        createMarker16()
-        createMarker17()
-        createMarker18()
-        createMarker19()
-        createMarker20()
-        createMarker21()
-        createMarker22()
-        createMarker23()
-        createNewMarker(9.864693, -83.920226,"Subway")
+        createNewMarker(9.864918, -83.921971, "Banco ATM")
+        createNewMarker(9.864078, -83.922054, "Clinica Dental")
+        createNewMarker(9.863229, -83.922160, "Taco Bell")
+        createNewMarker(9.862382, -83.922259, "MonkeyScrubs")
+        createNewMarker(9.861526, -83.922366, "Funeraria San Jorge")
+        createNewMarker(9.860691, -83.9224854, "Calle 4")
+
+        createNewMarker(9.864825, -83.921121, "Burger King")
+        createNewMarker(9.863936, -83.921206, "Calle 2")
+        createNewMarker(9.863116, -83.921318, "Instituto Jimenez")
+        createNewMarker(9.862263, -83.921426, "Farmacia CCSS")
+        createNewMarker(9.861405, -83.921538, "Ópticas Visión")
+        createNewMarker(9.860573, -83.921649, "Plaza Asís")
+
+        createNewMarker(9.864693, -83.920226, "Subway")
+        createNewMarker(9.863815, -83.920370, "Ruinas")
+        createNewMarker(9.863009, -83.920478,"Banco BAC")
+        createNewMarker(9.862152, -83.920604,"Laboratorio Clínico")
+        createNewMarker(9.861309, -83.920730,"Calle 0")
+        createNewMarker(9.860433, -83.920856,"Avenida 10")
+
+        createNewMarker(9.864565, -83.919397,"Cartago Centro")
+        createNewMarker(9.863726, -83.919513,"Caja ANDE")
+        createNewMarker(9.862900, -83.919614,"Pops")
+        createNewMarker(9.862036, -83.919741,"Avenida 6")
+        createNewMarker(9.861188, -83.919840,"Barber Shop")
+        createNewMarker(9.860309, -83.919966,"Coco Catering")
 
         createNewMarker(9.864456, -83.918536,"Rosti")
         createNewMarker(9.863592, -83.918644,"Soda Il Fratello")
@@ -89,27 +92,6 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         createNewMarker(9.860622, -83.915719,"GVI")
         createNewMarker(9.859676, -83.915746,"Plaza la soledad")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     fun resizeBitmap(drawableName: String, width: Int, height: Int): Bitmap {
@@ -124,285 +106,6 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         val coordinates = LatLng(Lat, Lng)
         val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
         map.addMarker(MarkerOptions().position(coordinates).title(nombre).icon(markerIcon))
-    }
-
-    private fun createMarker1() {
-        val coordinates = LatLng(9.864918, -83.921971)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Banco ATM").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker2() {
-        val coordinates = LatLng(9.864078, -83.922054)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Clinica Dental").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker3() {
-        val coordinates = LatLng(9.863229, -83.922160)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Taco Bell").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker4() {
-        val coordinates = LatLng(9.862382, -83.922259)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("MonkeyScrubs").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker5() {
-        val coordinates = LatLng(9.861526, -83.922366)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker =
-            MarkerOptions().position(coordinates).title("Funeraria San Jorge").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker6() {
-        val coordinates = LatLng(9.860691, -83.9224854)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Calle 4").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker7() {
-        val coordinates = LatLng(9.864825, -83.921121)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Burger King").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker8() {
-        val coordinates = LatLng(9.863936, -83.921206)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Calle 2").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker9() {
-        val coordinates = LatLng(9.863116, -83.921318)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker =
-            MarkerOptions().position(coordinates).title("Instituto Jimenez").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker10() {
-        val coordinates = LatLng(9.862263, -83.921426)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Farmacia CCSS").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker11() {
-        val coordinates = LatLng(9.861405, -83.921538)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Ópticas Visión").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker12() {
-        val coordinates = LatLng(9.860573, -83.921649)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Plaza Asís").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker13() {
-        val coordinates = LatLng(9.864565, -83.919397)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Cartago Centro").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker14() {
-        val coordinates = LatLng(9.863815, -83.920370)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Ruinas").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker15() {
-        val coordinates = LatLng(9.863009, -83.920478)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Banco BAC").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker16() {
-        val coordinates = LatLng(9.862152, -83.920604)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker =
-            MarkerOptions().position(coordinates).title("Laboratorio Clínico").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker17() {
-        val coordinates = LatLng(9.861309, -83.920730)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Calle 0").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker18() {
-        val coordinates = LatLng(9.863726, -83.919513)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Caja ANDE").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker19() {
-        val coordinates = LatLng(9.862900, -83.919614)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Pops").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker20() {
-        val coordinates = LatLng(9.862036, -83.919741)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Avenida 6").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker21() {
-        val coordinates = LatLng(9.861188, -83.919840)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Barber Shop").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker22() {
-        val coordinates = LatLng(9.860309, -83.919966)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Coco Catering").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
-    }
-
-    private fun createMarker23() {
-        val coordinates = LatLng(9.860433, -83.920856)
-        val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
-        val marker = MarkerOptions().position(coordinates).title("Avenida 10").icon(markerIcon)
-        map.addMarker(marker)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
-            4000,
-            null
-        )
     }
 
 }
