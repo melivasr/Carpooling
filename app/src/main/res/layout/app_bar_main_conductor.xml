@@ -16,19 +16,12 @@
         tools:context="MapaActivity"></fragment>
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
         <!-- Barra de herramientas -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@mipmap/fondo"
-            app:layout_scrollFlags="scroll|enterAlways"
-
-            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,6 +46,16 @@
         app:layout_constraintVertical_bias="1.0"
     app:layout_anchor="@+id/constraintLayout"
     app:layout_anchorGravity="center" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@mipmap/fondo2"
+        app:layout_anchor="@+id/appBarLayout"
+
+        app:layout_anchorGravity="center"
+        app:layout_scrollFlags="scroll|enterAlways" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
