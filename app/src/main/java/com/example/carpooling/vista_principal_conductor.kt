@@ -18,12 +18,12 @@ import com.example.carpooling.mi_perfil.Mi_perfil_usuario
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
-class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
+class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer:DrawerLayout
     private lateinit var toggle:ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vista_principal)
+        setContentView(R.layout.activity_vista_principal_conductor)
 
         //setup
         val bundle:Bundle? = intent.extras
@@ -35,7 +35,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val botonShow: Button = findViewById(R.id.botonShow)
 
         botonShow.setOnClickListener {
-            val view: View = layoutInflater.inflate(R.layout.activity_carpooling,null)
+            val view: View = layoutInflater.inflate(R.layout.activity_carpooling_conductor,null)
             val dialog = BottomSheetDialog(this)
             dialog.setContentView(view)
             dialog.show()

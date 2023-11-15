@@ -97,13 +97,22 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 val usuario = Usuario(name, correo, tipo, ubicacion, password, calificacion)
 
 
+
+
                 usuarioApi.save(usuario).enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                        Toast.makeText(this@register, "Save successful!", Toast.LENGTH_SHORT).show()
-                        showHome(
-                            correo,
-                            ProviderType.BASIC
-                        )
+                        val usuario = response.body()
+                        if (usuario != null) {
+                            Toast.makeText(this@register, "Save successful!", Toast.LENGTH_SHORT)
+                                .show()
+                            if (usuario.tipo == "empleado") {
+                                showHome(correo, ProviderType.BASIC)
+                            } else if (usuario.tipo == "conductor") {
+                                showHomeConductor(correo, ProviderType.BASIC)
+                            } else {
+                                showHome(correo, ProviderType.BASIC)
+                            }
+                        }
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
@@ -113,36 +122,6 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     }
                 })
 
-
-                /*
-                if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
-
-                    // Intentar registrar al usuario con Firebase
-                    FirebaseAuth.getInstance()
-                        .createUserWithEmailAndPassword(
-                            editTextEmail.text.toString(),
-                            editTextPassword.text.toString()
-                        ).addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                // Registro exitoso
-                                showHome(
-                                    task.result?.user?.email ?: "",
-                                    ProviderType.BASIC
-                                )
-                            } else {
-                                // Manejar fallos en el registro
-                                showAlert()
-                            }
-                        }
-                } else {
-                    // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
-                    Toast.makeText(
-                        this@register,
-                        "Por favor, completa todos los campos.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                */
                }
         }
     }
@@ -167,6 +146,14 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
      */
     private fun showHome(email: String, provider: ProviderType) {
         val homeIntent = Intent(this, vista_principal::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
+    }
+
+    private fun showHomeConductor(email: String, provider: ProviderType) {
+        val homeIntent = Intent(this, vista_principal_conductor::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }

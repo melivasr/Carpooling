@@ -68,12 +68,17 @@ class log_in : AppCompatActivity() {
 
                 usuarioApi.getUsuario(correo, password).enqueue(object : Callback<Usuario> {
                     override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                            val usuario = response.body()
-                            if (usuario != null) {
-                                Toast.makeText(this@log_in, "Login successful!", Toast.LENGTH_SHORT)
-                                    .show()
+                        val usuario = response.body()
+                        if (usuario != null) {
+                            Toast.makeText(this@log_in, "Login successful!", Toast.LENGTH_SHORT).show()
+                            if (usuario.tipo == "empleado") {
+                                showHome(correo, ProviderType.BASIC)
+                            } else if (usuario.tipo == "conductor") {
+                                showHomeConductor(correo, ProviderType.BASIC)
+                            }else{
                                 showHome(correo, ProviderType.BASIC)
                             }
+                        }
                     }
 
                     override fun onFailure(call: Call<Usuario>, t: Throwable) {
@@ -82,34 +87,6 @@ class log_in : AppCompatActivity() {
                             .log(Level.SEVERE, "Error occurred", t)
                     }
                 })
-
-                /*
-                if (editTextEmail.text.isNotEmpty() && editTextPassword.text.isNotEmpty()) {
-                    // Intentar iniciar sesión con Firebase
-                    FirebaseAuth.getInstance()
-                        .signInWithEmailAndPassword(
-                            editTextEmail.text.toString(),
-                            editTextPassword.text.toString()
-                        ).addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                // Inicio de sesión exitoso
-                                showHome(
-                                    task.result?.user?.email ?: "",
-                                    ProviderType.BASIC
-                                )
-                            } else {
-                                // Manejar fallos en el inicio de sesión
-                                showAlert()
-                            }
-                        }
-                } else {
-                    // Manejar el caso en el que los campos de correo electrónico y contraseña estén vacíos
-                    Toast.makeText(
-                        this@log_in,
-                        "Por favor, completa todos los campos.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }*/
             }
         }
     }
@@ -139,5 +116,14 @@ class log_in : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
+
+    private fun showHomeConductor(email: String, provider: ProviderType) {
+        val homeIntent = Intent(this, vista_principal_conductor::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
+    }
+
 
 }

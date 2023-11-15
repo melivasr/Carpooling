@@ -39,6 +39,9 @@
             android:name=".vista_principal"
             android:exported="true" />
         <activity
+            android:name=".vista_principal_conductor"
+            android:exported="true" />
+        <activity
             android:name=".register"
             android:exported="true" />
         <activity
