@@ -35,6 +35,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+/**
+* Actividad que muestra un mapa y permite la selección de rutas entre dos puntos.
+*
+* Esta actividad utiliza la API de Google Maps y la API de OpenRouteService para mostrar el mapa y
+* trazar rutas entre dos ubicaciones seleccionadas por el usuario.
+*
+* @property REQUEST_CODE_LOCATION Código de solicitud para los permisos de ubicación.
+* @property botonRuta Botón utilizado para iniciar la selección de rutas en el mapa.
+* @property start Coordenadas de inicio de la ruta.
+* @property end Coordenadas de fin de la ruta.
+* @property poly Polilínea que representa la ruta trazada en el mapa.
+*/
 @OptIn(ExperimentalCoroutinesApi::class)
 class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
@@ -49,6 +61,14 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
     private var end: String = ""
 
     var poly: Polyline? = null
+
+    /**
+     * Método llamado cuando la actividad se crea.
+     *
+     * Inicializa la interfaz de usuario y establece un [OnClickListener] para el botón de ruta.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_bar_main)
@@ -108,7 +128,11 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
-
+    /**
+     * Dibuja una ruta en el mapa utilizando las coordenadas proporcionadas por [routeResponse].
+     *
+     * @param routeResponse Objeto que contiene las coordenadas de la ruta.
+     */
     private fun drawRoute(routeResponse: RouteResponse?) {
         val polyLineOptions = PolylineOptions()
         routeResponse?.features?.first()?.geometry?.coordinates?.forEach {
@@ -118,12 +142,23 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             poly = map.addPolyline(polyLineOptions)
         }
     }
+
+    /**
+     * Obtiene una instancia de [Retrofit] configurada para la API de OpenRouteService.
+     *
+     * @return Instancia de [Retrofit].
+     */
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.openrouteservice.org/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    /**
+     * Método llamado cuando el mapa está listo para su uso.
+     *
+     * @param googleMap Instancia de [GoogleMap] que representa el mapa.
+     */
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         enableMyLocation()
@@ -187,6 +222,14 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         createNewMarker(9.859676, -83.915746, "Plaza la soledad")
 
     }
+    /**
+    * Redimensiona una imagen de mapa de bits a las dimensiones proporcionadas.
+    *
+    * @param drawableName Nombre del recurso drawable.
+    * @param width Ancho deseado de la imagen.
+    * @param height Altura deseada de la imagen.
+    * @return Imagen de mapa de bits redimensionada.
+    */
 
     fun resizeBitmap(drawableName: String, width: Int, height: Int): Bitmap {
         val imageBitmap = BitmapFactory.decodeResource(
@@ -201,6 +244,12 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         val markerIcon = BitmapDescriptorFactory.fromBitmap(resizeBitmap("marcador", 25, 25))
         map.addMarker(MarkerOptions().position(coordinates).title(nombre).icon(markerIcon))
     }
+    /**
+     * Obtiene la ubicación del usuario en tiempo real utilizando la API de ubicación de Google.
+     *
+     * @param context Contexto de la aplicación.
+     * @return Objeto [Location] que representa la ubicación del usuario.
+     */
 
     //Ubicacion en tiempo real
     @SuppressLint("MissingPermission")
@@ -235,11 +284,19 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
+    /**
+     * Verifica si se han otorgado los permisos de ubicación.
+     *
+     * @return `true` si los permisos de ubicación están otorgados, `false` en caso contrario.
+     */
 
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(
         this, Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
-
+    /**
+     * Habilita la capa de ubicación del mapa si los permisos están otorgados; de lo contrario, solicita
+     * permisos al usuario.
+     */
     private fun enableMyLocation() {
         if (!::map.isInitialized) return
         if (isPermissionsGranted()) {
@@ -249,6 +306,10 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Solicita permisos de ubicación al usuario. Si los permisos ya se han solicitado
+     * anteriormente y fueron denegados, se muestra un mensaje explicativo.
+     */
     private fun requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
@@ -264,7 +325,13 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             )
         }
     }
-
+    /**
+     * Método llamado cuando se obtiene una respuesta a la solicitud de permisos.
+     *
+     * @param requestCode Código de solicitud.
+     * @param permissions Arreglo de permisos solicitados.
+     * @param grantResults Resultados de la solicitud de permisos.
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -284,6 +351,11 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             else -> {}
         }
     }
+    /**
+     * Método llamado cuando se reanudan los fragmentos de la actividad.
+     *
+     * Verifica si la ubicación está habilitada y muestra un mensaje si los permisos no están otorgados.
+     */
 
     override fun onResumeFragments() {
         super.onResumeFragments()
