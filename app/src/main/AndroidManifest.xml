@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,12 +18,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Amigos.AnadirAmigosConductor"
+            android:exported="false" />
+        <activity
             android:name=".calificaciones.CalificacionEstrellas"
             android:exported="false" />
-        <activity android:name=".viajeEmpleados.ViajeEmpleados"
-            android:exported="true"/>
-        <activity android:name=".viajeEmpleados.ViajeEmpleadosConductor"
-            android:exported="true"/>
+        <activity
+            android:name=".viajeEmpleados.ViajeEmpleados"
+            android:exported="true" />
+        <activity
+            android:name=".viajeEmpleados.ViajeEmpleadosConductor"
+            android:exported="true" />
         <activity
             android:name=".historial.historial"
             android:exported="false" />
@@ -34,7 +38,6 @@
         <activity
             android:name=".mi_perfil.Mi_perfil_empleado"
             android:exported="true" />
-
         <activity
             android:name=".calificaciones.calificaciones"
             android:exported="false" />

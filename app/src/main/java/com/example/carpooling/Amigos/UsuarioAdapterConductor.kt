@@ -7,8 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
-class UsuarioAdapter(private val usuarios: List<String>, private val listener: UsuarioItemClickListener) :
-    RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+class UsuarioAdapterConductor(private val usuarios: List<String>, private val listener: UsuarioItemClickListener) :
+    RecyclerView.Adapter<UsuarioAdapterConductor.UsuarioViewHolder>() {
 
     interface UsuarioItemClickListener {
         fun onAccionButtonClick(usuario: String)
