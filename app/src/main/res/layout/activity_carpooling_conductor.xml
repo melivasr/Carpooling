@@ -6,108 +6,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/fondo2"
-    tools:context=".habilitar_carpooling">
+    tools:context=".viajeEmpleados.ViajeEmpleadosConductor">
 
     <!-- Agrega aquí la etiqueta de inicio para ScrollView -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonAmigo"
+        app:layout_constraintVertical_bias="0.578">
+
+        <!-- Icono de "estrellas" -->
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/empleados" />
+
+        <!-- Botón para "Viaje con empleado" -->
+        <Button
+            android:id="@+id/botonEmpleado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center|start"
+            android:text="Viaje de empleados"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            <!-- EditText para el origen -->
-            <EditText
-                android:id="@+id/editTextOrigen"
-                android:layout_width="275dp"
-                android:layout_height="34dp"
-                android:hint="Origen"
-                android:textColor="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/editTextDestino"
-                app:layout_constraintVertical_bias="0.078" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921">
 
-            <!-- EditText para el destino -->
-            <EditText
-                android:id="@+id/editTextDestino"
-                android:layout_width="275dp"
-                android:layout_height="34dp"
-                android:hint="Destino"
-                android:textColor="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOrigen"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintVertical_bias="0.078" />
+        <!-- Icono de "amistad" -->
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/amistad" />
 
-            <!-- Primer LinearLayout para "Viaje con amigo" -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.076"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDestino"
-                app:layout_constraintVertical_bias="0.177">
-
-                <!-- Icono de "amistad" -->
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/amistad" />
-
-                <!-- Botón para "Viaje con amigo" -->
-                <Button
-                    android:id="@+id/botonAmigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|start"
-                    android:text="Viaje de amigos"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- Segundo LinearLayout para "Viaje con empleado" -->
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.087"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/botonAmigo"
-                app:layout_constraintVertical_bias="0.266">
-
-                <!-- Icono de "estrellas" -->
-                <ImageView
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/empleados" />
-
-                <!-- Botón para "Viaje con empleado" -->
-                <Button
-                    android:id="@+id/botonEmpleado"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|start"
-                    android:text="Viaje de empleados"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+        <!-- Botón para "Viaje con amigo" -->
+        <Button
+            android:id="@+id/botonAmigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="Viaje de amigos"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
     <!-- Agrega aquí la etiqueta de cierre para ScrollView -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

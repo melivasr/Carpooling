@@ -26,6 +26,8 @@
             android:exported="false" />
         <activity android:name=".viajeEmpleados.ViajeEmpleados"
             android:exported="true"/>
+        <activity android:name=".viajeEmpleados.ViajeEmpleadosConductor"
+            android:exported="true"/>
         <activity
             android:name=".historial.historial"
             android:exported="false" />

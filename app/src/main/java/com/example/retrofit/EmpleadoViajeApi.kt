@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
+
 
 interface EmpleadoViajeApi {
     @GET("/usuario/get-all")
@@ -16,4 +16,8 @@ interface EmpleadoViajeApi {
 
     @GET("/viaje/get")
     fun getViaje(): Call<EmpleadoViaje>
+
+    @GET("/viaje/get-empleados")
+    fun getEmpleados(): Call<List<Any>>
+
 }

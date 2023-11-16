@@ -33,6 +33,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     // Variables para el manejo del menú deslizante
     private lateinit var drawer:DrawerLayout
     private lateinit var toggle:ActionBarDrawerToggle
+
     /**
      * Método llamado cuando se crea la actividad.
      *
@@ -57,13 +58,16 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         val botonShow: Button = findViewById(R.id.botonShow)
         botonShow.setOnClickListener {
-            val view: View = layoutInflater.inflate(R.layout.activity_carpooling,null)
-            val dialog = BottomSheetDialog(this)
-            dialog.setContentView(view)
-            enviarDatosCarpooling()
-            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, resources.getDisplayMetrics().heightPixels)
-            dialog.show()
+            val correo = intent.getStringExtra("email")
+            val ubicacion = intent.getStringExtra("ubicacion")
+
+            val intent = Intent(this, ViajeEmpleados::class.java)
+
+            intent.putExtra("email", correo)
+            intent.putExtra("ubicacion", ubicacion)
+            startActivity(intent)
         }
+
 
         // Configurar la barra de herramientas y el menú deslizante
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
@@ -145,19 +149,6 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
     }
 
-    fun enviarDatosCarpooling() {
-
-        val correo = intent.getStringExtra("email")
-        val ubicacion = intent.getStringExtra("ubicacion")
-
-        val intent = Intent(this, ViajeEmpleados::class.java)
-
-        intent.putExtra("email", correo)
-        intent.putExtra("ubicacion", ubicacion)
-
-        startActivity(intent)
-
-    }
     private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
         val intent = Intent(this, Amigos::class.java)

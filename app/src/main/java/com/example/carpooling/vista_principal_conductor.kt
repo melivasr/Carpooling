@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,6 +17,7 @@ import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_conductor
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
+import com.example.carpooling.viajeEmpleados.ViajeEmpleadosConductor
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
@@ -34,14 +36,9 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
 
 
         val botonShow: Button = findViewById(R.id.botonShow)
-
         botonShow.setOnClickListener {
-            val view: View = layoutInflater.inflate(R.layout.activity_carpooling_conductor,null)
-            val dialog = BottomSheetDialog(this)
-            dialog.setContentView(view)
-            dialog.show()
-
-
+            val intent = Intent(this, ViajeEmpleadosConductor::class.java)
+            startActivity(intent)
         }
 
 
