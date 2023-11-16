@@ -98,18 +98,21 @@ class log_in : AppCompatActivity() {
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             } else if (usuario.tipo == "conductor") {
                                 val intent = Intent(this@log_in, vista_principal_conductor::class.java)
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             } else {
                                 val intent = Intent(this@log_in, vista_principal::class.java)
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             }
                         }

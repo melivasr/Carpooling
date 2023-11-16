@@ -130,12 +130,14 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val nombre = intent.getStringExtra("nombre")
         val correo = intent.getStringExtra("email")
         val calificacion = intent.getStringExtra("calificacion")
+        val ubicacion = intent.getStringExtra("ubicacion")
 
         val intent = Intent(this, Mi_perfil_empleado::class.java)
 
         intent.putExtra("email", correo)
         intent.putExtra("nombre",  nombre)
         intent.putExtra("calificacion", calificacion)
+        intent.putExtra("ubicacion", ubicacion)
 
         startActivity(intent)
 

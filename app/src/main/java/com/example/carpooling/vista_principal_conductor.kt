@@ -95,14 +95,18 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         val nombre = intent.getStringExtra("nombre")
         val correo = intent.getStringExtra("email")
         val calificacion = intent.getStringExtra("calificacion")
+        val ubicacion = intent.getStringExtra("ubicacion")
 
         val intent = Intent(this, Mi_perfil_conductor::class.java)
 
         intent.putExtra("email", correo)
         intent.putExtra("nombre",  nombre)
         intent.putExtra("calificacion", calificacion)
+        intent.putExtra("ubicacion", ubicacion)
 
         startActivity(intent)
+
+
     }private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
         val intent = Intent(this, Amigos::class.java)

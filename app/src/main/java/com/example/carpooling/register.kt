@@ -96,9 +96,7 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val usuarioApi = retrofitService.getRetrofit().create(UsuarioApi::class.java)
 
             val ubicacionesMap = mapOf(
-                "Banco ATM" to "0",
-                "Clinica Dental" to "1",
-                "Taco Bell" to "2",
+                "Banco ATM" to "0", "Clinica Dental" to "1", "Taco Bell" to "2",
                 "MonkeyScrubs" to "3",
                 "Funeraria San Jorge" to "4",
                 "Calle 4" to "5",
@@ -191,6 +189,7 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             } else if (usuario.tipo == "conductor") {
                                 val intent =
@@ -198,12 +197,14 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             } else {
                                 val intent = Intent(this@register, vista_principal::class.java)
                                 intent.putExtra("email", usuario.correo)
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
+                                intent.putExtra("ubicacion", usuario.ubicacion)
                                 startActivity(intent)
                             }
                         }
