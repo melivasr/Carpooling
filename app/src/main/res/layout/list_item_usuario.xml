@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
@@ -8,15 +9,20 @@
         android:id="@+id/textViewNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:layout_below="@id/botonAccion"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toStartOf="@id/botonAccion"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="PerrosBar perrosbar@gmail.com"
         android:textColor="@android:color/black"
-        android:text="Nombre de Usuario"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/botonAccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_toEndOf="@id/textViewNombreUsuario"
-        android:text="Añadir amigo " />
+        android:layout_alignParentEnd="true"
+        android:text="Añadir amigo" />
 </RelativeLayout>
