@@ -3,8 +3,9 @@ package com.example.carpooling.Amigos
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
-import com.example.retrofit.EmpleadoViajeApi
 import com.example.retrofit.RetrofitService
 import com.example.retrofit.UsuarioApi
 import retrofit2.Call
@@ -13,9 +14,14 @@ import retrofit2.Response
 
 class AnadirAmigos : AppCompatActivity() {
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: UsuarioAdapterUsuario
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anadir_amigos)
+
+        recyclerView = findViewById(R.id.recyclerView)
 
         val apiService = RetrofitService().getRetrofit().create(UsuarioApi::class.java)
 
@@ -27,6 +33,7 @@ class AnadirAmigos : AppCompatActivity() {
                     // Manejar la respuesta exitosa
                     val usuarios = response.body()
                     // Hacer algo con los usuarios
+                    setupRecyclerView(usuarios)
                 } else {
                     // Manejar el error
                     println("Error: ${response.code()}")
@@ -38,5 +45,16 @@ class AnadirAmigos : AppCompatActivity() {
                 println("Error de red: ${t.message}")
             }
         })
+    }
+
+    private fun setupRecyclerView(usuarios: List<String>?) {
+        adapter = UsuarioAdapterUsuario(usuarios ?: emptyList(), object : UsuarioAdapterUsuario.UsuarioItemClickListener {
+            override fun onAccionButtonClick(usuario: String) {
+                // Implementar la lógica de clic del botón aquí
+            }
+        })
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
 }

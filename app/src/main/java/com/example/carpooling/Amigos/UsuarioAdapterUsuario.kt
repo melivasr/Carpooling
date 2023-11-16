@@ -15,7 +15,7 @@ class UsuarioAdapterUsuario(private val usuarios: List<String>, private val list
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_anadir_amigos, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_usuario, parent, false)
         return UsuarioViewHolder(view)
     }
 
