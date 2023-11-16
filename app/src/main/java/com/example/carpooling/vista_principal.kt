@@ -5,8 +5,6 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -14,11 +12,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.carpooling.Amigos.Amigos
-import com.example.carpooling.Amigos.AnadirAmigos
+import com.example.carpooling.AnadirAmigos.AnadirAmigos
 import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.carpooling.viajeEmpleados.ViajeEmpleados
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
 /**

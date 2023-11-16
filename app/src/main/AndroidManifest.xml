@@ -22,8 +22,8 @@
             android:name=".calificaciones.CalificacionEstrellas"
             android:exported="false" />
         <activity
-            android:name=".Amigos.AnadirAmigos"
-            android:exported="false" />
+            android:name=".AnadirAmigos.AnadirAmigos"
+            android:exported="true" />
         <activity android:name=".viajeEmpleados.ViajeEmpleados"
             android:exported="true"/>
         <activity android:name=".viajeEmpleados.ViajeEmpleadosConductor"
@@ -34,6 +34,7 @@
         <activity
             android:name=".mi_perfil.Mi_perfil_empleado"
             android:exported="true" />
+
         <activity
             android:name=".calificaciones.calificaciones"
             android:exported="false" />
