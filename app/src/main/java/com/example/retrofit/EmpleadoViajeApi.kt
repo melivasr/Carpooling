@@ -18,6 +18,8 @@ interface EmpleadoViajeApi {
     fun getViaje(): Call<EmpleadoViaje>
 
     @GET("/viaje/get-empleados")
-    fun getEmpleados(): Call<List<Any>>
+    fun getEmpleados(): Call<List<String>>
+
+
 
 }

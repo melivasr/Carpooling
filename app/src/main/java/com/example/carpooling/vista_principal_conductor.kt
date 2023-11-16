@@ -37,7 +37,9 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
 
         val botonShow: Button = findViewById(R.id.botonShow)
         botonShow.setOnClickListener {
+            val ubicacion = intent.getStringExtra("ubicacion")
             val intent = Intent(this, ViajeEmpleadosConductor::class.java)
+            intent.putExtra("ubicacion", ubicacion)
             startActivity(intent)
         }
 
