@@ -21,22 +21,22 @@ class AnadirAmigos : AppCompatActivity() {
 
         val call = apiService.getUsuariosRegistrados()
 
-        call.enqueue(object : Callback<List<Any>> {
-            override fun onResponse(call: Call<List<Any>>, response: Response<List<Any>>) {
+        call.enqueue(object : Callback<List<String>> {
+            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
                 if (response.isSuccessful) {
                     // Manejar la respuesta exitosa
-                    val usuarios: List<List<Any>> = response.body() as List<List<Any>>
-                    val nombres = usuarios.map { it[0] }
-
+                    val usuarios = response.body()
+                    // Hacer algo con los usuarios
                 } else {
                     // Manejar el error
+                    println("Error: ${response.code()}")
                 }
             }
 
-            override fun onFailure(call: Call<List<Any>>, t: Throwable) {
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
                 // Manejar el fallo de la llamada a la API
+                println("Error de red: ${t.message}")
             }
         })
     }
 }
-

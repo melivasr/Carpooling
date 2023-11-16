@@ -19,5 +19,7 @@ interface UsuarioApi {
     fun getUsuario(@Query("correo") correo: String, @Query("password") password: String): Call<Usuario>
 
     @GET("/usuario/get-registrados")
-    fun getUsuariosRegistrados(): Call<List<Any>>
+    fun getUsuariosRegistrados(): Call<List<String>>
+
 }
+
