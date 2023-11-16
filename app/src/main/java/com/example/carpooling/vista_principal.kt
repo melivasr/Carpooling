@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,6 +17,7 @@ import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.Amigos.AnadirAmigos
 import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
+import com.example.carpooling.viajeEmpleados.ViajeEmpleados
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
@@ -52,15 +54,15 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         setup(email?:"",provider?:"")
 
         // Configurar el botón que muestra un cuadro de diálogo inferior
-        val botonShow: Button = findViewById(R.id.botonShow)
 
+        val botonShow: Button = findViewById(R.id.botonShow)
         botonShow.setOnClickListener {
             val view: View = layoutInflater.inflate(R.layout.activity_carpooling,null)
             val dialog = BottomSheetDialog(this)
             dialog.setContentView(view)
+            enviarDatosCarpooling()
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, resources.getDisplayMetrics().heightPixels)
             dialog.show()
-
-
         }
 
         // Configurar la barra de herramientas y el menú deslizante
@@ -135,14 +137,28 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val intent = Intent(this, Mi_perfil_empleado::class.java)
 
         intent.putExtra("email", correo)
-        intent.putExtra("nombre",  nombre)
+        intent.putExtra("nombre", nombre)
         intent.putExtra("calificacion", calificacion)
         intent.putExtra("ubicacion", ubicacion)
 
         startActivity(intent)
 
+    }
 
-    }private fun abrirVentanaAmigos() {
+    fun enviarDatosCarpooling() {
+
+        val correo = intent.getStringExtra("email")
+        val ubicacion = intent.getStringExtra("ubicacion")
+
+        val intent = Intent(this, ViajeEmpleados::class.java)
+
+        intent.putExtra("email", correo)
+        intent.putExtra("ubicacion", ubicacion)
+
+        startActivity(intent)
+
+    }
+    private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
         val intent = Intent(this, Amigos::class.java)
         startActivity(intent)
