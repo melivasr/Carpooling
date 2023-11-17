@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
+
 class AdapterCalificaciones(private val usuarios: List<String>, private val listener: CalificacionesItemClickListener) :
     RecyclerView.Adapter<AdapterCalificaciones.UsuarioViewHolder>() {
 

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
+
 class UsuarioAdapterUsuario(private val usuarios: List<String>, private val listener: UsuarioItemClickListener) :
     RecyclerView.Adapter<UsuarioAdapterUsuario.UsuarioViewHolder>() {
 

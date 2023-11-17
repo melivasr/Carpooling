@@ -1,9 +1,10 @@
 package com.example.carpooling.calificaciones
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.carpooling.Amigos.UsuarioAdapterUsuario
 import com.example.carpooling.R
 import com.example.retrofit.RetrofitService
 import com.example.retrofit.UsuarioApi
@@ -11,15 +12,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Calificaciones : AppCompatActivity() {
+class calificaciones : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView2: RecyclerView
     private lateinit var adapter: AdapterCalificaciones
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calificaciones)
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView2 = findViewById(R.id.recyclerView2)
 
         val apiService = RetrofitService().getRetrofit().create(UsuarioApi::class.java)
 
@@ -52,7 +54,7 @@ class Calificaciones : AppCompatActivity() {
             }
         })
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        recyclerView2.layoutManager = LinearLayoutManager(this)
+        recyclerView2.adapter = adapter
     }
 }

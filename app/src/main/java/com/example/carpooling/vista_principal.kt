@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.Amigos.AnadirAmigos
-import com.example.carpooling.calificaciones.Calificaciones
+import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.carpooling.viajeAmigos.MostrarRuta
 import com.example.carpooling.viajeEmpleados.ViajeEmpleados
@@ -169,7 +169,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         startActivity(intent)
     }
     private fun abrirVentanacalificaciones() {
-        val intent = Intent(this, Calificaciones::class.java)
+        val intent = Intent(this, calificaciones::class.java)
         startActivity(intent)}
     private fun abrirVentanaAnadirAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
