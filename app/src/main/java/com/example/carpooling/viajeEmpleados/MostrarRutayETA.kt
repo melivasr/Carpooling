@@ -15,44 +15,33 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MostrarRutayETA : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mostrar_rutay_eta)
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_mostrar_rutay_eta)
 
-        val userApi = RetrofitService().getRetrofit().create(UsuarioApi::class.java)
-        val geographicDataApi =
-            RetrofitService().getRetrofit().create(GeographicDataApi::class.java)
-        val correo = intent.getStringExtra("email").toString()
-        userApi.getUser(correo).enqueue(object : Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful) {
-                    val idUser= response.body()
-                    if(idUser != null){
-                    val travelRequestData = TravelRequestData(idUser, listOf(3, 4, 6))
-                    geographicDataApi.getRegistrados(travelRequestData)
-                        .enqueue(object : Callback<TravelData> {
-                            override fun onResponse(
-                                call: Call<TravelData>,
-                                response: Response<TravelData>
-                            ) {
-                                if (response.isSuccessful) {
-                                    val travelData = response.body()
-                                    val textView = findViewById<TextView>(R.id.mostrarRutayEta)
-                                    textView.text =
-                                        "Distance: ${travelData?.distance}, Time: ${travelData?.time}"
-                                }
-                            }
+            val geographicDataApi =
+                RetrofitService().getRetrofit().create(GeographicDataApi::class.java)
+            val correo = intent.getStringExtra("email").toString()
+            val travelRequestData = TravelRequestData(correo, listOf(3, 4, 6))
+            geographicDataApi.getRegistrados(travelRequestData)
+                .enqueue(object : Callback<TravelData> {
+                    override fun onResponse(
+                        call: Call<TravelData>,
+                        response: Response<TravelData>
+                    ) {
+                        if (response.isSuccessful) {
+                            val travelData = response.body()
 
-                            override fun onFailure(call: Call<TravelData>, t: Throwable) {
-                                // handle failure
-                            }
-                        })
-                }}
-            }
 
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                // handle failure
-            }
-        })
+                            val textView = findViewById<TextView>(R.id.mostrarRutayEta)
+                            textView.text = travelData.toString()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<TravelData>, t: Throwable) {
+                        // handle failure
+                    }
+                })
+
+        }
     }
-}

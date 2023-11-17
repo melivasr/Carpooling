@@ -3,8 +3,8 @@ package com.example.model
 import android.R.attr.text
 
 
-class TravelRequestData(idUser: Int, listOf: List<Int>) {
-    var idUser: Int = idUser
+class TravelRequestData(correoUser: String, listOf: List<Int>) {
+    var correoUser: String = correoUser
     var usersToPickUp: List<Int> = emptyList()
 
 override fun toString(): String {
@@ -17,6 +17,6 @@ override fun toString(): String {
         }
     }
     stringList += "]"
-    return "TravelRequestData(idUser=$idUser, usersToPickUp=$stringList)"
+    return "TravelRequestData(correoUser=$correoUser, usersToPickUp=$stringList)"
 }
 }
