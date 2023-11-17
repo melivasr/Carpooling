@@ -2,7 +2,6 @@ package com.example.carpooling
 
 import com.example.model.Usuario
 import android.annotation.SuppressLint
-import android.content.ContentProvider
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,7 +17,6 @@ import androidx.appcompat.app.AlertDialog
 import com.example.retrofit.RetrofitService
 import com.example.retrofit.UsuarioApi
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -169,8 +167,10 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 // Calificación inicial
                 var calificacion = "5"
 
+                var Id = Int
+
                 // Crear un objeto Usuario con la información ingresada
-                val usuario = Usuario(name, correo, tipo,  ubicacionId, password, calificacion)
+                val usuario = Usuario(Id, name, correo, tipo,  ubicacionId, password, calificacion)
 
 
                 // Enviar la solicitud de registro al servidor

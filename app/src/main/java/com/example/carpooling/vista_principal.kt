@@ -60,12 +60,12 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             val correo = intent.getStringExtra("email")
             val ubicacion = intent.getStringExtra("ubicacion")
 
-            val intent = Intent(this, ViajeEmpleados::class.java)
+            val intent = Intent(this@vista_principal, ViajeEmpleados::class.java)
 
             intent.putExtra("email", correo)
             intent.putExtra("ubicacion", ubicacion)
 
-            val intent2 = Intent(this, ViajeAmigos::class.java)
+            val intent2 = Intent(this@vista_principal, ViajeAmigos::class.java)
 
             intent2.putExtra("email", correo)
             intent2.putExtra("ubicacion", ubicacion)
@@ -77,14 +77,15 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         // Configurar el nuevo botón para abrir la ventana "Mostrar Ruta"
         val botonRuta: Button = findViewById(R.id.botonRuta)
         botonRuta.setOnClickListener {
+
             val correo = intent.getStringExtra("email")
-            val ubicacion = intent.getStringExtra("ubicacion")
 
-            val intentUsuario = Intent(this, MostrarRuta::class.java)
+            val intent = Intent(this@vista_principal, MostrarRuta::class.java)
 
-            intentUsuario.putExtra("email", correo)
-            intentUsuario.putExtra("ubicacion", ubicacion)
-            startActivity(intentUsuario)
+            intent.putExtra("email", correo)
+
+            startActivity(intent)
+
         }
 
 
@@ -136,7 +137,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
                 // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
             }
             R.id.nav_item_five -> {
-                Toast.makeText(this, "Añandir Amigos ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Añadir Amigos ", Toast.LENGTH_SHORT).show()
                 abrirVentanaAnadirAmigos()
             }
 
@@ -153,7 +154,7 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val calificacion = intent.getStringExtra("calificacion")
         val ubicacion = intent.getStringExtra("ubicacion")
 
-        val intent = Intent(this, Mi_perfil_empleado::class.java)
+        val intent = Intent(this@vista_principal, Mi_perfil_empleado::class.java)
 
         intent.putExtra("email", correo)
         intent.putExtra("nombre", nombre)

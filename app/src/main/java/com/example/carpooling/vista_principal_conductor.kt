@@ -37,22 +37,20 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         val botonShow: Button = findViewById(R.id.botonShow)
         botonShow.setOnClickListener {
             val ubicacion = intent.getStringExtra("ubicacion")
-            val intent = Intent(this, ViajeEmpleadosConductor::class.java)
+            val intent = Intent(this@vista_principal_conductor, ViajeEmpleadosConductor::class.java)
             intent.putExtra("ubicacion", ubicacion)
-            val intent2 = Intent(this, ViajeAmigosConductor::class.java)
+            val intent2 = Intent(this@vista_principal_conductor, ViajeAmigosConductor::class.java)
+            intent2.putExtra("ubicacion", ubicacion)
             startActivity(intent)
             startActivity(intent2)
         }
         // Configurar el nuevo botón para abrir la ventana "Mostrar Ruta"
         val botonRutayETA: Button = findViewById(R.id.botonRutayEta)
         botonRutayETA.setOnClickListener {
-            val correo = intent.getStringExtra("email")
+
             val ubicacion = intent.getStringExtra("ubicacion")
-
-            val intentUsuario = Intent(this, MostrarRutayETA::class.java)
-
-            intentUsuario.putExtra("email", correo)
-            intentUsuario.putExtra("ubicacion", ubicacion)
+            val intentUsuario = Intent(this@vista_principal_conductor, MostrarRutayETA::class.java)
+            intent.putExtra("ubicacion", ubicacion)
             startActivity(intentUsuario)
         }
 
@@ -115,7 +113,7 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         val calificacion = intent.getStringExtra("calificacion")
         val ubicacion = intent.getStringExtra("ubicacion")
 
-        val intent = Intent(this, Mi_perfil_conductor::class.java)
+        val intent = Intent(this@vista_principal_conductor, Mi_perfil_conductor::class.java)
 
         intent.putExtra("email", correo)
         intent.putExtra("nombre",  nombre)
@@ -127,7 +125,7 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
 
     }private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
-        val intent = Intent(this, Amigos::class.java)
+        val intent = Intent(this@vista_principal_conductor, Amigos::class.java)
         startActivity(intent)
     }
     private fun abrirVentanacalificaciones() {
@@ -136,7 +134,7 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         val calificacion = intent.getStringExtra("calificacion")
         val ubicacion = intent.getStringExtra("ubicacion")
 
-        val intent = Intent(this, calificaciones::class.java)
+        val intent = Intent(this@vista_principal_conductor, calificaciones::class.java)
 
         intent.putExtra("email", correo)
         intent.putExtra("nombre", nombre)
