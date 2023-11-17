@@ -16,8 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.carpooling.Mapa.MapaActivity.Companion.REQUEST_CODE_LOCATION
 import com.example.carpooling.R
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -95,18 +97,6 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
                 }
             }
-            /*
-            if (::map.isInitialized) {
-                map.setOnMapClickListener {
-                    if (start.isEmpty()) {
-                        start = "${it.longitude},${it.latitude}"
-                    } else if (end.isEmpty()) {
-                        end = "${it.longitude},${it.latitude}"
-                        createRoute()
-                    }
-                }
-            }
-            */
         }
         createFragment()
     }
@@ -142,6 +132,20 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             poly = map.addPolyline(polyLineOptions)
         }
     }
+    /**
+     * Dibuja una ruta en el mapa utilizando las coordenadas proporcionadas por la lista que da el servidor.
+     */
+    private fun createPolylines(){
+        val polylineOptions = PolylineOptions()
+            //Estas coordenadas son de ejemplo las cambias por la de la lista
+            .add(LatLng(9.857428133919552, -83.91250656268834))
+            .add(LatLng(9.857671849215071, -83.91113158262938))
+            .add(LatLng(9.857391856878795, -83.9103737481273))
+            .add(LatLng(9.8562005251962, -83.91054349689202))
+            .add(LatLng(9.855056608257728, -83.91017987086795))
+            .add(LatLng(9.854717203570459, -83.90906347521076))
+        val polyline = map.addPolyline(polylineOptions)
+    }
 
     /**
      * Obtiene una instancia de [Retrofit] configurada para la API de OpenRouteService.
@@ -160,8 +164,15 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
      * @param googleMap Instancia de [GoogleMap] que representa el mapa.
      */
     override fun onMapReady(googleMap: GoogleMap) {
+        val coordinates = LatLng(9.855236366809901, -83.90900562894333)
         map = googleMap
         enableMyLocation()
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(coordinates, 18f),
+            4000,
+            null
+        )
+        createPolylines()
         createNewMarker(9.864918, -83.921971, "Banco ATM")
         createNewMarker(9.864078, -83.922054, "Clinica Dental")
         createNewMarker(9.863229, -83.922160, "Taco Bell")
