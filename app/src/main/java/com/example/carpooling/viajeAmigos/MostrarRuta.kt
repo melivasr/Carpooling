@@ -13,8 +13,15 @@ import com.example.retrofit.UsuarioApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+/**
+ * Actividad para mostrar la ruta de un viaje.
+ */
 class MostrarRuta: AppCompatActivity() {
+    /**
+     * Método llamado cuando se crea la actividad.
+     *
+     * @param savedInstanceState Estado de la instancia guardado.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mostrar_ruta)
@@ -45,4 +52,3 @@ class MostrarRuta: AppCompatActivity() {
 
     }
 }
-
