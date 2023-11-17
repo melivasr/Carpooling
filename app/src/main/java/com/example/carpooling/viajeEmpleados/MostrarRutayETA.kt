@@ -23,10 +23,11 @@ class MostrarRutayETA : AppCompatActivity() {
         val geographicDataApi =
             RetrofitService().getRetrofit().create(GeographicDataApi::class.java)
         val correo = intent.getStringExtra("email").toString()
-        userApi.getUser(correo).enqueue(object : Callback<Usuario> {
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+        userApi.getUser(correo).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val idUser= response.body()
+                    if(idUser != null){
                     val travelRequestData = TravelRequestData(idUser, listOf(3, 4, 6))
                     geographicDataApi.getRegistrados(travelRequestData)
                         .enqueue(object : Callback<TravelData> {
@@ -46,10 +47,10 @@ class MostrarRutayETA : AppCompatActivity() {
                                 // handle failure
                             }
                         })
-                }
+                }}
             }
 
-            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
                 // handle failure
             }
         })

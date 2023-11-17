@@ -18,7 +18,7 @@ interface UsuarioApi {
     fun save(@Body usuario: Usuario): Call<Usuario>
 
     @GET("/usuario/correo")
-    fun getUser(@Query("correo") correo: String): Call<Usuario>
+    fun getUser(@Query("correo") correo: String): Call<Int>
     @GET("/usuario/login")
     fun getUsuario(@Query("correo") correo: String, @Query("password") password: String): Call<Usuario>
 

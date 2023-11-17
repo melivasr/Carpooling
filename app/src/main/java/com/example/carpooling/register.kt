@@ -2,6 +2,7 @@ package com.example.carpooling
 
 import com.example.model.Usuario
 import android.annotation.SuppressLint
+import android.content.ContentProvider
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.retrofit.RetrofitService
 import com.example.retrofit.UsuarioApi
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

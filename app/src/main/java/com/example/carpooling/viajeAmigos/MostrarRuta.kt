@@ -23,34 +23,37 @@ class MostrarRuta: AppCompatActivity() {
         val geographicDataApi =
             RetrofitService().getRetrofit().create(GeographicDataApi::class.java)
         val correo = intent.getStringExtra("email").toString()
-        userApi.getUser(correo).enqueue(object : Callback<Usuario> {
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+        val id = intent.getStringExtra("id");
+        userApi.getUser(correo).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val usuario = response.body()
-                    val travelRequestData = TravelRequestData(usuario, listOf(3, 4, 6))
-                    geographicDataApi.getRegistrados(travelRequestData)
-                        .enqueue(object : Callback<TravelData> {
-                            override fun onResponse(
-                                call: Call<TravelData>,
-                                response: Response<TravelData>
-                            ) {
-                                if (response.isSuccessful) {
-                                    val travelData = response.body()
+                    if (usuario != null) {
+                        val travelRequestData = TravelRequestData(usuario, listOf(3, 4, 6))
+                        geographicDataApi.getRegistrados(travelRequestData)
+                            .enqueue(object : Callback<TravelData> {
+                                override fun onResponse(
+                                    call: Call<TravelData>,
+                                    response: Response<TravelData>
+                                ) {
+                                    if (response.isSuccessful) {
+                                        val travelData = response.body()
 
 
-                                    val textView = findViewById<TextView>(R.id.mostrarRuta)
-                                    textView.text = travelData.toString()
+                                        val textView = findViewById<TextView>(R.id.mostrarRuta)
+                                        textView.text = travelData.toString()
+                                    }
                                 }
-                            }
 
-                            override fun onFailure(call: Call<TravelData>, t: Throwable) {
-                                // handle failure
-                            }
-                        })
+                                override fun onFailure(call: Call<TravelData>, t: Throwable) {
+                                    // handle failure
+                                }
+                            })
+                    }
                 }
             }
 
-            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
                 // handle failure
             }
         })
