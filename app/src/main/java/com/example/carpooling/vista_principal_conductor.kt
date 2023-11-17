@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.carpooling.Amigos.Amigos
+import com.example.carpooling.Amigos.AnadirAmigos
+import com.example.carpooling.Amigos.AnadirAmigosConductor
 import com.example.carpooling.calificaciones.Calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_conductor
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
@@ -83,9 +85,18 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
                 abrirVentanaAmigos()
                 // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
             }
+            R.id.nav_item_five -> {
+                Toast.makeText(this, "Añandir Amigos ", Toast.LENGTH_SHORT).show()
+                abrirVentanaAnadirAmigos()
+            }
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun abrirVentanaAnadirAmigos() {
+        val intent = Intent(this, AnadirAmigosConductor::class.java)
+        startActivity(intent)
     }
 
     private fun abrirVentanaPerfil() {
