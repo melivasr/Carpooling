@@ -16,6 +16,7 @@ import com.example.carpooling.Amigos.AnadirAmigos
 import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.carpooling.viajeEmpleados.ViajeEmpleados
+import com.example.carpooling.viajeAmigos.ViajeAmigos
 import com.google.android.material.navigation.NavigationView
 
 /**
@@ -62,7 +63,15 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
             intent.putExtra("email", correo)
             intent.putExtra("ubicacion", ubicacion)
+
+            val intent2 = Intent(this, ViajeAmigos::class.java)
+
+            intent2.putExtra("email", correo)
+            intent2.putExtra("ubicacion", ubicacion)
+
             startActivity(intent)
+
+            startActivity(intent2)
         }
 
 
@@ -104,10 +113,6 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
                 Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show()
                 abrirVentanaPerfil()
             }
-            R.id.nav_item_two -> {
-                Toast.makeText(this, "Historial", Toast.LENGTH_SHORT).show()
-                // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
-            }
             R.id.nav_item_three -> {
                 Toast.makeText(this, "calificaciones", Toast.LENGTH_SHORT).show()
                 abrirVentanacalificaciones()
@@ -141,7 +146,6 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         intent.putExtra("nombre", nombre)
         intent.putExtra("calificacion", calificacion)
         intent.putExtra("ubicacion", ubicacion)
-
         startActivity(intent)
 
     }

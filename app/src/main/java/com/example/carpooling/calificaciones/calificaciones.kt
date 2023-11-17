@@ -22,7 +22,7 @@ class calificaciones: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_anadir_amigos)
+        setContentView(R.layout.activity_calificaciones)
 
         recyclerView = findViewById(R.id.recyclerView)
 

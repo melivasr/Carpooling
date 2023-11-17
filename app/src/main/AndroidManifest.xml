@@ -45,6 +45,12 @@
             android:name=".mi_perfil.Mi_perfil_conductor"
             android:exported="true" />
         <activity
+            android:name=".viajeAmigos.ViajeAmigos"
+            android:exported="true" />
+        <activity
+            android:name=".viajeAmigos.ViajeAmigosConductor"
+            android:exported="true" />
+        <activity
             android:name=".Amigos.Amigos"
             android:exported="false" /> <!-- ... Otras configuraciones de la aplicación ... -->
         <meta-data

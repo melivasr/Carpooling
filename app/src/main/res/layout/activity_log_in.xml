@@ -18,7 +18,7 @@
         android:layout_marginTop="340dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="76dp"
-        android:hint="Correo electrónico"
+        android:hint="Carné"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"

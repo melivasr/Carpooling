@@ -18,6 +18,7 @@ import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_conductor
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.carpooling.viajeEmpleados.ViajeEmpleadosConductor
+import com.example.carpooling.viajeAmigos.ViajeAmigosConductor
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
@@ -40,7 +41,9 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
             val ubicacion = intent.getStringExtra("ubicacion")
             val intent = Intent(this, ViajeEmpleadosConductor::class.java)
             intent.putExtra("ubicacion", ubicacion)
+            val intent2 = Intent(this, ViajeAmigosConductor::class.java)
             startActivity(intent)
+            startActivity(intent2)
         }
 
 
@@ -70,10 +73,6 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
             R.id.nav_item_one -> {
                 Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show()
                 abrirVentanaPerfil()
-            }
-            R.id.nav_item_two -> {
-                Toast.makeText(this, "Historial", Toast.LENGTH_SHORT).show()
-                // Puedes agregar lógica adicional para abrir otra actividad o realizar otras acciones aquí
             }
             R.id.nav_item_three -> {
                 Toast.makeText(this, "calificaciones", Toast.LENGTH_SHORT).show()

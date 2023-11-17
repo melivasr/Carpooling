@@ -8,9 +8,6 @@
             android:title="Mi perfil"/>
 
         <!-- Elemento de menú 2 - Historial -->
-        <item android:id="@+id/nav_item_two"
-            android:icon="@mipmap/historia"
-            android:title="Historial de viajes"/>
 
         <!-- Elemento de menú 3 - Item 3 -->
         <item android:id="@+id/nav_item_three"

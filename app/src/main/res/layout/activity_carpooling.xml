@@ -52,7 +52,9 @@
                 android:gravity="center|start"
                 android:text="Viaje con amigo"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:context=".viajeAmigos.ViajeAmigos"
+                />
         </LinearLayout>
 
         <!-- Segundo LinearLayout para "Viaje con empleado" -->
@@ -83,7 +85,8 @@
                 android:gravity="center|start"
                 android:text="Viaje con empleado"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:context=".viajeEmpleados.ViajeEmpleados"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -7,18 +7,6 @@
     android:background="@mipmap/fondo"
     tools:context=".log_in">
 
-    <!-- Cuadro de texto para el nombre de usuario -->
-
-    <!-- Cuadro de texto para el nombre de Apellido -->
-    <!-- Cuadro de texto para la dirección de correo electrónico -->
-
-
-    <!-- Cuadro de texto para la contraseña -->
-
-    <!-- Botón de registro -->
-
-    <!-- Imagen del logo "logo_persona" -->
-
 
     <ImageView
         android:id="@+id/imageView3"
@@ -121,7 +109,7 @@
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="328dp"
-        android:hint="Correo electrónico"
+        android:hint="Carné"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"

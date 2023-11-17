@@ -20,7 +20,8 @@
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonAmigo"
-        app:layout_constraintVertical_bias="0.578">
+        app:layout_constraintVertical_bias="0.578"
+        tools:ignore="NotSibling">
 
         <!-- Icono de "estrellas" -->
         <ImageView
@@ -66,7 +67,8 @@
             android:gravity="center|start"
             android:text="Viaje de amigos"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:context=".viajeAmigos.ViajeAmigosConductor"/>
     </LinearLayout>
     <!-- Agrega aquí la etiqueta de cierre para ScrollView -->
 

@@ -190,6 +190,7 @@ class register : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 intent.putExtra("nombre", usuario.name)
                                 intent.putExtra("calificacion", usuario.calificacion)
                                 intent.putExtra("ubicacion", usuario.ubicacion)
+
                                 startActivity(intent)
                             } else if (usuario.tipo == "conductor") {
                                 val intent =
