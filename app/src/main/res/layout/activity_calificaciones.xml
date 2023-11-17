@@ -1,33 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/calificaciones_layout.xml -->
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/fondo"
-    tools:context=".calificaciones.calificaciones">
+    tools:context=".Amigos.AnadirAmigos">
 
-    <!-- Título de la página -->
-    <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calificaciones"
-        android:textSize="24sp"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Lista de calificaciones -->
-    <ListView
-        android:id="@+id/listViewCalificaciones"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/textViewTitulo"
-        android:background="@android:color/white"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:clipToPadding="false"
-        android:padding="8dp"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 </RelativeLayout>
