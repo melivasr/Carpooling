@@ -1,5 +1,7 @@
 package com.example.carpooling.calificaciones
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,7 +51,8 @@ class calificaciones : AppCompatActivity() {
 
     private fun setupRecyclerView(usuarios: List<String>?) {
         adapter = AdapterCalificaciones(usuarios ?: emptyList(), object : AdapterCalificaciones.CalificacionesItemClickListener {
-            override fun onAccionButtonClick(usuario: String) {
+            override fun onAccionButtonClick(usuario: String, context: Context) {
+                val intent = Intent(context, CalificacionEstrellas::class.java)
                 // Implementar la lógica de clic del botón aquí
             }
         })

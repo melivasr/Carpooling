@@ -1,5 +1,6 @@
 package com.example.carpooling.calificaciones
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,12 +8,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
-
 class AdapterCalificaciones(private val usuarios: List<String>, private val listener: CalificacionesItemClickListener) :
     RecyclerView.Adapter<AdapterCalificaciones.UsuarioViewHolder>() {
 
     interface CalificacionesItemClickListener {
-        fun onAccionButtonClick(usuario: String)
+        fun onAccionButtonClick(usuario: String, context: Context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
@@ -37,7 +37,7 @@ class AdapterCalificaciones(private val usuarios: List<String>, private val list
             textViewNombreUsuario.text = usuario
 
             botonAccion.setOnClickListener {
-                listener.onAccionButtonClick(usuario)
+                listener.onAccionButtonClick(usuario, itemView.context)
             }
         }
     }
