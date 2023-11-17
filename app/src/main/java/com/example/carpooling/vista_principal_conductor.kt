@@ -19,21 +19,28 @@ import com.example.carpooling.viajeEmpleados.ViajeEmpleadosConductor
 import com.example.carpooling.viajeAmigos.ViajeAmigosConductor
 import com.example.carpooling.viajeEmpleados.MostrarRutayETA
 import com.google.android.material.navigation.NavigationView
-
+/**
+ * Actividad principal para el rol de conductor con funcionalidades de navegación.
+ */
 class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer:DrawerLayout
     private lateinit var toggle:ActionBarDrawerToggle
+    /**
+     * Método llamado cuando la actividad se crea.
+     *
+     * @param savedInstanceState Datos que pueden ser utilizados para restablecer el estado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vista_principal_conductor)
 
-        //setup
+        // Configuración inicial
         val bundle:Bundle? = intent.extras
         val email: String? = bundle?.getString("email")
         val provider: String? = bundle?.getString("provider")
         setup(email?:"",provider?:"")
 
-
+        // Configurar el nuevo botón para abrir las ventanas "ViajeEmpleadosConductor" y "ViajeAmigosConductor"
         val botonShow: Button = findViewById(R.id.botonShow)
         botonShow.setOnClickListener {
             val ubicacion = intent.getStringExtra("ubicacion")
@@ -44,7 +51,7 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
             startActivity(intent)
             startActivity(intent2)
         }
-        // Configurar el nuevo botón para abrir la ventana "Mostrar Ruta"
+        // Configurar el nuevo botón para abrir la ventana "MostrarRutayETA"
         val botonRutayETA: Button = findViewById(R.id.botonRutayEta)
         botonRutayETA.setOnClickListener {
 
@@ -55,7 +62,7 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         }
 
 
-
+        // Configurar la barra de herramientas y la navegación lateral
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
@@ -72,11 +79,19 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         navigationView.setNavigationItemSelectedListener(this)
 
     }
-
+    /**
+     * Configuración inicial de la actividad.
+     */
     private fun setup(s: String, s1: String) {
+        // Puedes agregar lógica de configuración adicional aquí según sea necesario
 
     }
-
+    /**
+     * Método llamado cuando se selecciona un elemento en el menú de navegación.
+     *
+     * @param item Elemento seleccionado.
+     * @return `true` si el evento fue manejado con éxito.
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_one -> {
@@ -100,12 +115,16 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
-
+    /**
+     * Abre la ventana de agregar amigos.
+     */
     private fun abrirVentanaAnadirAmigos() {
         val intent = Intent(this, AnadirAmigosConductor::class.java)
         startActivity(intent)
     }
-
+    /**
+     * Abre la ventana de perfil.
+     */
     private fun abrirVentanaPerfil() {
 
         val nombre = intent.getStringExtra("nombre")
@@ -122,12 +141,17 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
 
         startActivity(intent)
 
-
+        /**
+         * Abre la ventana de amigos.
+         */
     }private fun abrirVentanaAmigos() {
         // Crear un Intent para abrir la actividad de Amigos
         val intent = Intent(this@vista_principal_conductor, Amigos::class.java)
         startActivity(intent)
     }
+    /**
+     * Abre la ventana de calificaciones.
+     */
     private fun abrirVentanacalificaciones() {
         val nombre = intent.getStringExtra("nombre")
         val correo = intent.getStringExtra("email")
@@ -142,17 +166,30 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         intent.putExtra("ubicacion", ubicacion)
         startActivity(intent)}
 
-
+    /**
+     * Método llamado después de que la actividad se ha creado, para sincronizar el estado del botón del cajón de navegación.
+     *
+     * @param savedInstanceState Datos que pueden ser utilizados para restablecer el estado de la actividad.
+     */
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         toggle.syncState()
     }
-
+    /**
+     * Método llamado cuando se produce un cambio en la configuración.
+     *
+     * @param newConfig Nueva configuración después del cambio.
+     */
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         toggle.onConfigurationChanged(newConfig)
     }
-
+    /**
+     * Método llamado cuando se selecciona un elemento del menú de opciones.
+     *
+     * @param item Elemento seleccionado.
+     * @return `true` si el evento fue manejado con éxito.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
             return true
