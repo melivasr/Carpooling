@@ -38,7 +38,7 @@
         <!-- Agrega tu botón en la parte inferior -->
 
         <Button
-            android:id="@+id/botonInicioViaje"
+            android:id="@+id/botonRutayEta"
             android:layout_width="142dp"
             android:layout_height="54dp"
             android:layout_marginTop="32dp"

@@ -15,6 +15,7 @@ import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.Amigos.AnadirAmigos
 import com.example.carpooling.calificaciones.Calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
+import com.example.carpooling.viajeAmigos.MostrarRuta
 import com.example.carpooling.viajeEmpleados.ViajeEmpleados
 import com.example.carpooling.viajeAmigos.ViajeAmigos
 import com.google.android.material.navigation.NavigationView
@@ -72,6 +73,18 @@ class vista_principal : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             startActivity(intent)
 
             startActivity(intent2)
+        }
+        // Configurar el nuevo botón para abrir la ventana "Mostrar Ruta"
+        val botonRuta: Button = findViewById(R.id.botonRuta)
+        botonRuta.setOnClickListener {
+            val correo = intent.getStringExtra("email")
+            val ubicacion = intent.getStringExtra("ubicacion")
+
+            val intentUsuario = Intent(this, MostrarRuta::class.java)
+
+            intentUsuario.putExtra("email", correo)
+            intentUsuario.putExtra("ubicacion", ubicacion)
+            startActivity(intentUsuario)
         }
 
 
