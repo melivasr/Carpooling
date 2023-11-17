@@ -1,26 +1,16 @@
 package com.example.carpooling.calificaciones
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.carpooling.Amigos.UsuarioAdapterUsuario
 import com.example.carpooling.R
-import com.example.retrofit.RetrofitService
-import com.example.retrofit.UsuarioApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
-class AdapterCalificaciones(private val usuarios: List<String>, private val listener: UsuarioItemClickListener) :
+class AdapterCalificaciones(private val usuarios: List<String>, private val listener: CalificacionesItemClickListener) :
     RecyclerView.Adapter<AdapterCalificaciones.UsuarioViewHolder>() {
 
-    interface UsuarioItemClickListener {
+    interface CalificacionesItemClickListener {
         fun onAccionButtonClick(usuario: String)
     }
 
@@ -42,7 +32,7 @@ class AdapterCalificaciones(private val usuarios: List<String>, private val list
         private val textViewNombreUsuario: TextView = itemView.findViewById(R.id.textViewNombreUsuario)
         private val botonAccion: Button = itemView.findViewById(R.id.botonAccion)
 
-        fun bind(usuario: String, listener: UsuarioItemClickListener) {
+        fun bind(usuario: String, listener: CalificacionesItemClickListener) {
             textViewNombreUsuario.text = usuario
 
             botonAccion.setOnClickListener {

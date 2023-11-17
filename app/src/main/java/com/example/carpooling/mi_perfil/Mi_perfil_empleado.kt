@@ -42,7 +42,7 @@ class Mi_perfil_empleado : AppCompatActivity() {
 
         // Establecer los datos en los elementos de la interfaz de usuario
         textViewNombre.text = "Nombre: $nombre"
-        textViewCorreo.text = "Correo: $correo"
+        textViewCorreo.text = "Carné: $correo"
         textViewCalificacion.text = "Calificación: $calificacion"
     }
 }
