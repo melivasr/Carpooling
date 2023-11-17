@@ -1,6 +1,7 @@
 package com.example.carpooling.Amigos
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +12,6 @@ import com.example.retrofit.UsuarioApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 class AnadirAmigos : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -50,7 +50,10 @@ class AnadirAmigos : AppCompatActivity() {
     private fun setupRecyclerView(usuarios: List<String>?) {
         adapter = UsuarioAdapterUsuario(usuarios ?: emptyList(), object : UsuarioAdapterUsuario.UsuarioItemClickListener {
             override fun onAccionButtonClick(usuario: String) {
-                // Implementar la lógica de clic del botón aquí
+                // Al hacer clic en el botón, abrir la actividad Amigos con la información del usuario
+                val intent = Intent(this@AnadirAmigos, Amigos::class.java)
+                intent.putExtra("usuarioSeleccionado", usuario)
+                startActivity(intent)
             }
         })
 
