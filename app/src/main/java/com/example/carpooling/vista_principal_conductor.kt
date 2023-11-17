@@ -17,8 +17,10 @@ import com.example.carpooling.Amigos.Amigos
 import com.example.carpooling.calificaciones.calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_conductor
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
+import com.example.carpooling.viajeAmigos.MostrarRuta
 import com.example.carpooling.viajeEmpleados.ViajeEmpleadosConductor
 import com.example.carpooling.viajeAmigos.ViajeAmigosConductor
+import com.example.carpooling.viajeEmpleados.MostrarRutayETA
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
@@ -45,6 +47,19 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
             startActivity(intent)
             startActivity(intent2)
         }
+        // Configurar el nuevo botón para abrir la ventana "Mostrar Ruta"
+        val botonRutayETA: Button = findViewById(R.id.botonRutayEta)
+        botonRutayETA.setOnClickListener {
+            val correo = intent.getStringExtra("email")
+            val ubicacion = intent.getStringExtra("ubicacion")
+
+            val intentUsuario = Intent(this, MostrarRutayETA::class.java)
+
+            intentUsuario.putExtra("email", correo)
+            intentUsuario.putExtra("ubicacion", ubicacion)
+            startActivity(intentUsuario)
+        }
+
 
 
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
