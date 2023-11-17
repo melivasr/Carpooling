@@ -2,11 +2,6 @@ package com.example.carpooling.calificaciones
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
@@ -16,10 +11,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class calificaciones: AppCompatActivity() {
+class Calificaciones : AppCompatActivity() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterCalificaciones
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calificaciones)
@@ -51,7 +46,7 @@ class calificaciones: AppCompatActivity() {
     }
 
     private fun setupRecyclerView(usuarios: List<String>?) {
-        adapter = AdapterCalificaciones(usuarios ?: emptyList(), object : AdapterCalificaciones.UsuarioItemClickListener {
+        adapter = AdapterCalificaciones(usuarios ?: emptyList(), object : AdapterCalificaciones.CalificacionesItemClickListener {
             override fun onAccionButtonClick(usuario: String) {
                 // Implementar la lógica de clic del botón aquí
             }
@@ -61,4 +56,3 @@ class calificaciones: AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 }
-

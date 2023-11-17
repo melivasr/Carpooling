@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.carpooling.Amigos.Amigos
-import com.example.carpooling.calificaciones.calificaciones
+import com.example.carpooling.calificaciones.Calificaciones
 import com.example.carpooling.mi_perfil.Mi_perfil_conductor
 import com.example.carpooling.mi_perfil.Mi_perfil_empleado
 import com.example.carpooling.viajeAmigos.MostrarRuta
@@ -126,14 +126,18 @@ class vista_principal_conductor : AppCompatActivity(),NavigationView.OnNavigatio
         startActivity(intent)
     }
     private fun abrirVentanacalificaciones() {
-        // Crear un Intent para abrir la actividad de Amigos
-        val intent = Intent(this, calificaciones::class.java)
-        startActivity(intent)
-    }private fun abrirVentanacaHistorial() {
-        // Crear un Intent para abrir la actividad de Amigos
-        val intent = Intent(this, calificaciones::class.java)
-        startActivity(intent)
-    }
+        val nombre = intent.getStringExtra("nombre")
+        val correo = intent.getStringExtra("email")
+        val calificacion = intent.getStringExtra("calificacion")
+        val ubicacion = intent.getStringExtra("ubicacion")
+
+        val intent = Intent(this, Calificaciones::class.java)
+
+        intent.putExtra("email", correo)
+        intent.putExtra("nombre", nombre)
+        intent.putExtra("calificacion", calificacion)
+        intent.putExtra("ubicacion", ubicacion)
+        startActivity(intent)}
 
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
