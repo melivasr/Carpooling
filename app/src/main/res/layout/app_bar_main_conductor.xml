@@ -39,25 +39,14 @@
 
         <Button
             android:id="@+id/botonInicioViaje"
-            android:layout_width="144dp"
-            android:layout_height="44dp"
-            android:text="Iniciar Viaje"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="32dp"
+            android:text="Mostrar Ruta y ETA"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.605"
+            app:layout_constraintHorizontal_bias="0.557"
             app:layout_constraintStart_toEndOf="@id/botonShow"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/botonFinalizarViaje"
-            android:layout_width="147dp"
-            android:layout_height="44dp"
-            android:layout_marginBottom="16dp"
-            android:text="Calcular ETA"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.62"
-            app:layout_constraintStart_toEndOf="@+id/botonShow"
             tools:ignore="MissingConstraints" />
 
         <Button
