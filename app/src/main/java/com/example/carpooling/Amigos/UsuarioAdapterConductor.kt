@@ -7,10 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carpooling.R
-class UsuarioAdapterConductor(private val usuarios: List<String>, private val listener: UsuarioItemClickListener) :
+class UsuarioAdapterConductor(private val usuarios: List<String>, private val listener: UsuarioAdapterConductorItemClickListener) :
     RecyclerView.Adapter<UsuarioAdapterConductor.UsuarioViewHolder>() {
 
-    interface UsuarioItemClickListener {
+    interface UsuarioAdapterConductorItemClickListener {
         fun onAccionButtonClick(usuario: String)
     }
 
@@ -32,7 +32,7 @@ class UsuarioAdapterConductor(private val usuarios: List<String>, private val li
         private val textViewNombreUsuario: TextView = itemView.findViewById(R.id.textViewNombreUsuario)
         private val botonAccion: Button = itemView.findViewById(R.id.botonAccion)
 
-        fun bind(usuario: String, listener: UsuarioItemClickListener) {
+        fun bind(usuario: String, listener: UsuarioAdapterConductorItemClickListener) {
             textViewNombreUsuario.text = usuario
 
             botonAccion.setOnClickListener {

@@ -15,7 +15,7 @@ import retrofit2.Response
 class AnadirAmigosConductor : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: UsuarioAdapterUsuario
+    private lateinit var adapter: UsuarioAdapterConductor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class AnadirAmigosConductor : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(usuarios: List<String>?) {
-        adapter = UsuarioAdapterUsuario(usuarios ?: emptyList(), object : UsuarioAdapterUsuario.UsuarioItemClickListener {
+        adapter = UsuarioAdapterConductor(usuarios ?: emptyList(), object : UsuarioAdapterConductor.UsuarioAdapterConductorItemClickListener {
             override fun onAccionButtonClick(usuario: String) {
                 // Implementar la lógica de clic del botón aquí
             }
